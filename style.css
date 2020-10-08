@@ -1,0 +1,51 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+header {
+  height: 200px;
+  width: 100%;
+}
+
+footer {
+  height: 200px;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: flex;
+  border: 1px solid lightgrey;
+  flex-wrap: wrap;
+  width: 450px;
+  height: 450px;
+}
+
+.cell {
+  border: 1px solid lightgrey;
+  width: 11.11%;
+  height: 11.11%;
+}
+
+.mFalcon {
+  background-color: white;
+  background-size: contain;
+  background-image: url('https://www.pikpng.com/pngl/m/30-300944_bleed-area-may-not-be-visible-millennium-falcon.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
