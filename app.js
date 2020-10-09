@@ -20,6 +20,18 @@
 //   }
 // }
 
+// function moveDroidDown() {
+//   for (let i = 0; i < bDroids.length; i++) {
+//     bDroids[i] += width
+//   }
+// }
+
+// function removeDroids() {
+//   bDroids.forEach((droid) => {
+//     cells[droid].classList.remove('bDroid')
+//   })
+// }
+
 // function findRowStarts(width) {
 //   for (let i = 1; i <= width; i++) {
 //     gridStarts.push(width * (i - 1))
@@ -50,6 +62,8 @@ for (let i = 0; i < width ** 2; i++) {
   grid.appendChild(div)
   cells.push(div)
 }
+
+
 
 const gridStarts = [0] // * Starting at 0 in order to be able to call the right number based on the row number
 const gridEnds = [0] // * Starting at 0 in order to be able to call the right number based on the row number
@@ -108,7 +122,14 @@ document.addEventListener('keydown', (event) => {
 // ! -------------------------------------------
 
 
- 
+
+
+
+
+
+
+
+
 
 
 
@@ -119,16 +140,95 @@ document.addEventListener('keydown', (event) => {
 let bDroids = [0, 1, 2, 3, 4, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
 
+//  ! Need to find the 'min droid' & 'max droid' on each row
+
+//  * row 1 = (x >= gridStart[1]) && (x <= girdEnds[1])
+//  * row 2 = (x >= gridStart[2]) && (x <= girdEnds[2])
+//  * row 3 = (x >= gridStart[3]) && (x <= girdEnds[3])
+
+//  * row n = (x >= gridStart[n]) && (x <= girdEnds[n])
+
+// for (let i = 1; i <= gridStarts.length; i++) {
+//   if ()
+// }
+
+//  ! Need to create array of droids for each row!!
+
+const droidsInRows = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [] }
+
+const droidsRow_1 = []
+const droidsRow_2 = []
+const droidsRow_3 = []
+const droidsRow_4 = []
+const droidsRow_5 = []
+const droidsRow_6 = []
+const droidsRow_7 = []
+const droidsRow_8 = []
+const droidsRow_9 = []
+
+
+bDroids.forEach((droid) => {
+  if (droid > gridStarts[1] && droid < gridEnds[1]) {
+    droidsRow_1.push(droid)
+  } else if (droid > gridStarts[2] && droid < gridEnds[2]) {
+    droidsRow_2.push(droid)
+  } else if (droid > gridStarts[3] && droid < gridEnds[3]) {
+    droidsRow_3.push(droid)
+  } else if (droid > gridStarts[4] && droid < gridEnds[4]) {
+    droidsRow_4.push(droid)
+  } else if (droid > gridStarts[5] && droid < gridEnds[5]) {
+    droidsRow_5.push(droid)
+  } else if (droid > gridStarts[6] && droid < gridEnds[6]) {
+    droidsRow_6.push(droid)
+  } else if (droid > gridStarts[7] && droid < gridEnds[7]) {
+    droidsRow_7.push(droid)
+  } else if (droid > gridStarts[8] && droid < gridEnds[8]) {
+    droidsRow_8.push(droid)
+  } else if (droid > gridStarts[9] && droid < gridEnds[9]) {
+    droidsRow_9.push(droid)
+  }
+})
+
+
+console.log(droidsRow_1)
+console.log(droidsRow_2)
+console.log(droidsRow_3)
+console.log(droidsRow_4)
+console.log(droidsRow_5)
+console.log(droidsRow_6)
+console.log(droidsRow_7)
+console.log(droidsRow_8)
+console.log(droidsRow_9)
+
+// console.log(droidsInRows)
+
+// for (i = 0; i <= cells.length; i++) {
+//   if (cells[i].classList.contains('bDroid')){
+//     console.log('bdroid')
+//   }
+// }
+
+// console.log(droidsInRows)
+
+function findMin(array) {
+  return Math.min.apply(Math, array)
+}
+
+function findMax(array) {
+  return Math.max.apply(Math, array)
+}
+
+
 function addDroid() {
-  const maxInd = bDroids.indexOf(findMax(bDroids))
-  const minInd = bDroids.indexOf(findMin(bDroids))
+  const droidMaxInd = bDroids.indexOf(findMax(bDroids))
+  const droidMinInd = bDroids.indexOf(findMin(bDroids))
 
   bDroids.forEach((droid) => {
     cells[droid].classList.add('bDroid')
   })
 
-  cells[minInd].classList.add('min')
-  cells[maxInd].classList.add('max')
+  cells[droidMinInd].classList.add('min')
+  cells[droidMaxInd].classList.add('max')
 }
 
 function findIndexOfMinDroid() {
@@ -180,13 +280,6 @@ function removeDroids() {
 // Movement R/L = width - starting bDroids in row.length
 
 
-function findMin(array) {
-  return Math.min.apply(Math, array)
-}
-
-function findMax(array) {
-  return Math.max.apply(Math, array)
-}
 
 let movement = 0
 
@@ -207,4 +300,4 @@ let movement = 0
 //   }
 
 
-// }, 1500);
+// }, 1500)
