@@ -122,6 +122,7 @@ document.addEventListener('keydown', (event) => {
 
 let bDroids = [0, 1, 2, 3, 4, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
+
 // * ------------- bDroids in Row --------------
 
 let droidsRow_1 = []
@@ -328,6 +329,7 @@ function removeDroidRow_3() {
 }
 
 
+
 // ! -------------------------------------------
 // ! ----------- Below needs work! -------------
 // ! -------------------------------------------
@@ -387,7 +389,6 @@ function moveDroidsRight() {
   }
 }
 
-console.log(droidsRow_2.length)
 
 function moveDroidsLeft() {
   for (let i = droidsRow_2.length - 1; i >= 0; i--) {
@@ -431,7 +432,28 @@ function moveDroidsLeft() {
 }
 
 
+function moveDroidsDown() {
+  for (let i = 0; i < droidsRow_1.length; i++) {
+    droidsRow_1[i] += width
+  }
+
+  // for(let i = 0; i < droidsRow_3.length; i++) {
+  //   droidsRow_3[i] += width
+  // }
+  // for(let i = 0; i < droidsRow_1.length; i++) {
+  //   droidsRow_3[i] += width
+  // }
+}
+
+
+
+
+
 const interval = setInterval(() => {
+  if (maxDroidR1 === gridEnds[1]) {
+
+
+  }
   removeDroidRow_1()
   removeDroidRow_2()
   removeDroidRow_3()
@@ -447,8 +469,16 @@ const interval = setInterval(() => {
 
 
 
+// ! Think about this - would be good to have a function that updates the position of all the droids all the time.
 
+// function findDroids() {
+//   bDroids = []
+//   document.querySelectorAll('.bDroid')
+// }
 
+// console.log(findDroids())
+
+// console.log(document.querySelectorAll('.bDroid'))
 
 
 
@@ -505,7 +535,7 @@ const interval = setInterval(() => {
 
 
 
-let movement = 0
+// let movement = 0
 
 // const interval = setInterval(() => {
   // const max = findMax(bDroids)
