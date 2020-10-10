@@ -97,16 +97,30 @@ document.addEventListener('keydown', (event) => {
 // * ----------------- bDroids -----------------
 // * -------------------------------------------
 
-let r1Droids = [0, 1, 2, 3]
-let r2Droids = [14, 15, 16, 17]
-let r3Droids = [18, 19, 20, 21]
+const r1Droids = [0, 1, 2, 3]
+const r2Droids = [14, 15, 16, 17]
+const r3Droids = [18, 19, 20, 21]
 
-// let allDroids = r1Droids + r2Droids + r3Droids // All droids in 1 array
+const allDroids = r1Droids + r2Droids + r3Droids // All droids in 1 array
 
-let arrayAllDroids = []
+const arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 
-arrayAllDroids.push(r1Droids, r2Droids, r3Droids) // Array of arrays
 
+const leadDroids = []
+const tailDroids = []
+
+
+function findLeadAndTail(array) {
+  for (let i = 0; i < arrayAllDroids.length; i++) {
+    leadDroids.push(findLead(array[i]))
+    tailDroids.push(findTail(array[i]))
+  }
+}
+
+findLeadAndTail(arrayAllDroids)
+
+console.log(leadDroids)
+console.log(tailDroids)
 
 
 
@@ -160,9 +174,9 @@ function addDroids(array) {
   addTail(findTail(array))
 }
 
-addDroids(r1Droids)
-addDroids(r2Droids)
-addDroids(r3Droids)
+addDroids(arrayAllDroids[0])
+addDroids(arrayAllDroids[1])
+addDroids(arrayAllDroids[2])
 
 
 function removeDroids(array) {
@@ -277,15 +291,15 @@ function moveAllDroids(array) {
 
 
 
-const interval = setInterval(() => {
-  moveAllDroids(r1Droids)
-  moveAllDroids(r2Droids)
-  moveAllDroids(r3Droids)
-}, 500)
+// const interval = setInterval(() => {
+//   moveAllDroids(arrayAllDroids[0])
+//   moveAllDroids(arrayAllDroids[1])
+//   moveAllDroids(arrayAllDroids[2])
+// }, 500)
 
 
-// * ------------Timed Movement--------------
+// // * ------------Timed Movement--------------
 
-// removeDroids()
-// moveDroidsRight(bDroids)
-// addDroids()
+// // removeDroids()
+// // moveDroidsRight(bDroids)
+// // addDroids()
