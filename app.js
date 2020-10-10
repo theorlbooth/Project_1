@@ -348,34 +348,70 @@ function removeDroidRow_3() {
 
 
 
+// function moveDroidsRight() {
+//   for (let i = 0; i < droidsRow_1.length; i++) {
+//     if (maxDroidR1 < gridEnds[1]) {
+//       droidsRow_1[i] += 1
+//       minDroidR1 = findMin(droidsRow_1)
+//       maxDroidR1 = findMax(droidsRow_1)
+//     }
+//   }
+//   for (let i = 0; i < droidsRow_3.length; i++) {
+//     if (maxDroidR3 < gridEnds[3]) {
+//       droidsRow_3[i] += 1
+//       minDroidR3 = findMin(droidsRow_3)
+//       maxDroidR3 = findMax(droidsRow_3)
+//     }
+//   }
+//   for (let i = 0; i < droidsRow_5.length; i++) {
+//     if (maxDroidR5 < gridEnds[5]) {
+//       droidsRow_5[i] += 1
+//       minDroidR5 = findMin(droidsRow_5)
+//       maxDroidR5 = findMax(droidsRow_5)
+//     }
+//   }
+//   for (let i = 0; i < droidsRow_7.length; i++) {
+//     if (maxDroidR7 < gridEnds[7]) {
+//       droidsRow_7[i] += 1
+//       minDroidR7 = findMin(droidsRow_7)
+//       maxDroidR7 = findMax(droidsRow_7)
+//     }
+//   }
+//   for (let i = 0; i < minDroidArray.length; i++) {
+//     if (i % 2 === 0) {
+//       minDroidArray[i] += 1
+//     }
+//   }
+//   for (let i = 0; i < maxDroidArray.length; i++) {
+//     if (i % 2 === 0) {
+//       maxDroidArray[i] += 1
+//     }
+//   }
+// }
+
 function moveDroidsRight() {
   for (let i = 0; i < droidsRow_1.length; i++) {
-    if (maxDroidR1 < gridEnds[1]) {
-      droidsRow_1[i] += 1
-      minDroidR1 = findMin(droidsRow_1)
-      maxDroidR1 = findMax(droidsRow_1)
-    }
+    droidsRow_1[i] += 1
+    minDroidR1 = findMin(droidsRow_1)
+    maxDroidR1 = findMax(droidsRow_1)
   }
   for (let i = 0; i < droidsRow_3.length; i++) {
-    if (maxDroidR3 < gridEnds[3]) {
-      droidsRow_3[i] += 1
-      minDroidR3 = findMin(droidsRow_3)
-      maxDroidR3 = findMax(droidsRow_3)
-    }
+
+    droidsRow_3[i] += 1
+    minDroidR3 = findMin(droidsRow_3)
+    maxDroidR3 = findMax(droidsRow_3)
   }
   for (let i = 0; i < droidsRow_5.length; i++) {
-    if (maxDroidR5 < gridEnds[5]) {
-      droidsRow_5[i] += 1
-      minDroidR5 = findMin(droidsRow_5)
-      maxDroidR5 = findMax(droidsRow_5)
-    }
+
+    droidsRow_5[i] += 1
+    minDroidR5 = findMin(droidsRow_5)
+    maxDroidR5 = findMax(droidsRow_5)
   }
   for (let i = 0; i < droidsRow_7.length; i++) {
-    if (maxDroidR7 < gridEnds[7]) {
-      droidsRow_7[i] += 1
-      minDroidR7 = findMin(droidsRow_7)
-      maxDroidR7 = findMax(droidsRow_7)
-    }
+
+    droidsRow_7[i] += 1
+    minDroidR7 = findMin(droidsRow_7)
+    maxDroidR7 = findMax(droidsRow_7)
   }
   for (let i = 0; i < minDroidArray.length; i++) {
     if (i % 2 === 0) {
@@ -389,35 +425,68 @@ function moveDroidsRight() {
   }
 }
 
+// function moveDroidsLeft() {
+//   for (let i = droidsRow_2.length - 1; i >= 0; i--) {
+//     if (minDroidR2 > gridStarts[2]) {
+//       droidsRow_2[i] -= 1
+//       minDroidR2 = findMin(droidsRow_2)
+//       maxDroidR2 = findMax(droidsRow_2)
+//     }
+//   }
+//   for (let i = 0; i < droidsRow_4.length; i++) {
+//     if (minDroidR4 > gridStarts[4]) {
+//       droidsRow_4[i] -= 1
+//       minDroidR4 = findMin(droidsRow_4)
+//       maxDroidR4 = findMax(droidsRow_4)
+//     }
+//   }
+//   for (let i = 0; i < droidsRow_6.length; i++) {
+//     if (minDroidR6 > gridStarts[6]) {
+//       droidsRow_6[i] -= 1
+//       minDroidR6 = findMin(droidsRow_6)
+//       maxDroidR6 = findMax(droidsRow_6)
+//     }
+//   }
+//   for (let i = 0; i < droidsRow_8.length; i++) {
+//     if (minDroidR8 > gridStarts[8]) {
+//       droidsRow_8[i] -= 1
+//       minDroidR8 = findMin(droidsRow_8)
+//       maxDroidR8 = findMax(droidsRow_8)
+//     }
+//   }
+//   for (let i = 0; i < minDroidArray.length; i++) {
+//     if (i % 2 !== 0) {
+//       minDroidArray[i] -= 1
+//     }
+//   }
+//   for (let i = 0; i < maxDroidArray.length; i++) {
+//     if (i % 2 !== 0) {
+//       maxDroidArray[i] -= 1
+//     }
+//   }
+// }
+
 
 function moveDroidsLeft() {
   for (let i = droidsRow_2.length - 1; i >= 0; i--) {
-    if (minDroidR2 > gridStarts[2]) {
-      droidsRow_2[i] -= 1
-      minDroidR2 = findMin(droidsRow_2)
-      maxDroidR2 = findMax(droidsRow_2)
-    }
+    droidsRow_2[i] -= 1
+    minDroidR2 = findMin(droidsRow_2)
+    maxDroidR2 = findMax(droidsRow_2)
   }
   for (let i = 0; i < droidsRow_4.length; i++) {
-    if (minDroidR4 > gridStarts[4]) {
-      droidsRow_4[i] -= 1
-      minDroidR4 = findMin(droidsRow_4)
-      maxDroidR4 = findMax(droidsRow_4)
-    }
+    droidsRow_4[i] -= 1
+    minDroidR4 = findMin(droidsRow_4)
+    maxDroidR4 = findMax(droidsRow_4)
   }
   for (let i = 0; i < droidsRow_6.length; i++) {
-    if (minDroidR6 > gridStarts[6]) {
-      droidsRow_6[i] -= 1
-      minDroidR6 = findMin(droidsRow_6)
-      maxDroidR6 = findMax(droidsRow_6)
-    }
+    droidsRow_6[i] -= 1
+    minDroidR6 = findMin(droidsRow_6)
+    maxDroidR6 = findMax(droidsRow_6)
   }
   for (let i = 0; i < droidsRow_8.length; i++) {
-    if (minDroidR8 > gridStarts[8]) {
-      droidsRow_8[i] -= 1
-      minDroidR8 = findMin(droidsRow_8)
-      maxDroidR8 = findMax(droidsRow_8)
-    }
+    droidsRow_8[i] -= 1
+    minDroidR8 = findMin(droidsRow_8)
+    maxDroidR8 = findMax(droidsRow_8)
   }
   for (let i = 0; i < minDroidArray.length; i++) {
     if (i % 2 !== 0) {
