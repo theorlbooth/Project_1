@@ -16,6 +16,29 @@ for (let i = 0; i < width ** 2; i++) {
   cells.push(div)
 }
 
+// * -------------Min & Max rows--------------
+
+const row1Beg = (width * (1 - 1))
+const row2Beg = (width * (2 - 1))
+const row3Beg = (width * (3 - 1))
+const row4Beg = (width * (4 - 1))
+const row5Beg = (width * (5 - 1))
+const row6Beg = (width * (6 - 1))
+const row7Beg = (width * (7 - 1))
+const row8Beg = (width * (8 - 1))
+const row9Beg = (width * (9 - 1))
+
+const row1End = ((width * (width - (width - 1))) - 1)
+const row2End = ((width * (width - (width - 2))) - 1)
+const row3End = ((width * (width - (width - 3))) - 1)
+const row4End = ((width * (width - (width - 4))) - 1)
+const row5End = ((width * (width - (width - 5))) - 1)
+const row6End = ((width * (width - (width - 6))) - 1)
+const row7End = ((width * (width - (width - 7))) - 1)
+const row8End = ((width * (width - (width - 8))) - 1)
+const row9End = ((width * (width - (width - 9))) - 1)
+
+
 // * -------------------------------------------
 // * ----------------- mFalcon -----------------
 // * -------------------------------------------
@@ -50,72 +73,105 @@ document.addEventListener('keydown', (event) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // * -------------------------------------------
 // * ----------------- bDroids -----------------
 // * -------------------------------------------
 
-let r1Droids = [0, 1, 2, 3, 4]
-let r2Droids = [13, 14, 15, 16, 17]
-let r3Droids = [18, 19, 20, 21, 22]
+let r1Droids = [0, 1, 2, 3]
+let r2Droids = [14, 15, 16, 17]
+let r3Droids = [18, 19, 20, 21]
+
+// let allDroids = r1Droids + r2Droids + r3Droids // All droids in 1 array
+
+let arrayAllDroids = []
+
+arrayAllDroids.push(r1Droids, r2Droids, r3Droids) // Array of arrays
+
+
+
 
 
 //  * -------- Adding bDroids ---------
 
-let leadDroid = ''
-// let r2leadDroid = ''
-// let r3leadDroid = ''
 
-let tailDroid = ''
-// let r2tailDroid = ''
-// let r3tailDroid = ''
+//  * -------- Finding/Adding/Removing Lead ---------
 
-
-//  * -------- Adding/Removing Lead ---------
-function addLead(array) {
-  leadDroid = Math.max.apply(Math, array)
-  cells[leadDroid].classList.add('lead')
+function findLead(array) {
+  return Math.max.apply(Math, array)
 }
 
-function removeLead(array) {
-  leadDroid = Math.max.apply(Math, array)
-  cells[leadDroid].classList.remove('lead')
+function addLead(index) {
+  cells[index].classList.add('lead')
+}
+
+function removeLead(index) {
+  cells[index].classList.remove('lead')
 }
 
 
-//  * -------- Adding/Removing Tail ---------
-function addTail(array) {
-  tailDroid = Math.min.apply(Math, array)
-  cells[tailDroid].classList.add('tail')
+//  * -------- Finding/Adding/Removing Tail ---------
+
+function findTail(array) {
+  return Math.min.apply(Math, array)
 }
 
-function removeTail(array) {
-  tailDroid = Math.min.apply(Math, array)
-  cells[tailDroid].classList.remove('tail')
+function addTail(index) {
+  cells[index].classList.add('tail')
 }
 
+function removeTail(index) {
+  cells[index].classList.remove('tail')
+}
+
+
+
+
+
+// ! Would it be possible to loop through 3 arrays here?
+// ! Array of droids, array of lead, array of tail
 
 //  * -------- Adding/Removing Droids ---------
-function addDroids(array, leadDroid, tailDroid) {
+
+function addDroids(array) {
   array.forEach((droid) => {
     cells[droid].classList.add('bDroid')
   })
-  addLead(array, leadDroid)
-  addTail(array, tailDroid)
+  addLead(findLead(array))
+  addTail(findTail(array))
 }
 
 addDroids(r1Droids)
-// addDroids(r2Droids)
-// addDroids(r3Droids)
+addDroids(r2Droids)
+addDroids(r3Droids)
 
 
 function removeDroids(array) {
   array.forEach((droid) => {
     cells[droid].classList.remove('bDroid')
   })
-  removeLead(array)
-  removeTail(array)
+  removeLead(findLead(array))
+  removeTail(findTail(array))
 }
-
 
 
 
@@ -131,7 +187,6 @@ function removeDroids(array) {
 // * This would mean 'n' numbers of rows has to be odd (i.e width has to be odd)
 
 
-
 function moveDroidsRight(array) {
   removeDroids(array)
   for (let i = 0; i < array.length; i++) {
@@ -139,6 +194,7 @@ function moveDroidsRight(array) {
   }
   addDroids(array)
 }
+
 
 function moveDroidsLeft(array) {
   removeDroids(array)
@@ -148,6 +204,7 @@ function moveDroidsLeft(array) {
   addDroids(array)
 }
 
+
 function moveDroidsDown(array) {
   removeDroids(array)
   for (let i = 0; i < array.length; i++) {
@@ -156,94 +213,75 @@ function moveDroidsDown(array) {
   addDroids(array)
 }
 
-// * -------------Min & Max rows--------------
-
-const row1Beg = (width * (1 - 1))
-const row2Beg = (width * (2 - 1))
-const row3Beg = (width * (3 - 1))
-const row4Beg = (width * (4 - 1))
-const row5Beg = (width * (5 - 1))
-const row6Beg = (width * (6 - 1))
-const row7Beg = (width * (7 - 1))
-const row8Beg = (width * (8 - 1))
-const row9Beg = (width * (9 - 1))
-
-const row1End = ((width * (width - (width - 1))) - 1)
-const row2End = ((width * (width - (width - 2))) - 1)
-const row3End = ((width * (width - (width - 3))) - 1)
-const row4End = ((width * (width - (width - 4))) - 1)
-const row5End = ((width * (width - (width - 5))) - 1)
-const row6End = ((width * (width - (width - 6))) - 1)
-const row7End = ((width * (width - (width - 7))) - 1)
-const row8End = ((width * (width - (width - 8))) - 1)
-const row9End = ((width * (width - (width - 9))) - 1)
 
 
 
-
-
-
-
-function moveAllDroids(array, leadDroid, tailDroid) {
-  if (leadDroid < row1End) {
+function moveAllDroids(array) {
+  const lead = findLead(array)
+  const tail = findTail(array)
+  if (lead < row1End) {
     // Row 1 (Right)
     moveDroidsRight(array)
-  } else if (leadDroid === row1End) {
+  } else if (lead === row1End) {
     // Down
     moveDroidsDown(array)
-  } else if (tailDroid > row2Beg && tailDroid < row2End) {
+  } else if (tail > row2Beg && tail < row2End) {
     // Row 2 (Left)
     moveDroidsLeft(array)
-  } else if (tailDroid === row2Beg) {
+  } else if (tail === row2Beg) {
     // Down
     moveDroidsDown(array)
-  } else if (leadDroid < row3End && leadDroid > row3Beg) {
+  } else if (lead < row3End && lead > row3Beg) {
     // Row 3 (Right)
     moveDroidsRight(array)
-  } else if (leadDroid === row3End) {
+  } else if (lead === row3End) {
     // Down
     moveDroidsDown(array)
-  } else if (tailDroid > row4Beg && tailDroid < row4End) {
+  } else if (tail > row4Beg && tail < row4End) {
     // Row 4 (Left)
     moveDroidsLeft(array)
-  } else if (tailDroid === row4Beg) {
+  } else if (tail === row4Beg) {
     // Down
     moveDroidsDown(array)
-  } else if (leadDroid < row5End && leadDroid > row5Beg) {
+  } else if (lead < row5End && lead > row5Beg) {
     // Row 5 (Right)
     moveDroidsRight(array)
-  } else if (leadDroid === row5End) {
+  } else if (lead === row5End) {
     // Down
     moveDroidsDown(array)
-  } else if (tailDroid > row6Beg && tailDroid < row6End) {
+  } else if (tail > row6Beg && tail < row6End) {
     // Row 6 (Left)
     moveDroidsLeft(array)
-  } else if (tailDroid === row6Beg) {
+  } else if (tail === row6Beg) {
     // Down
     moveDroidsDown(array)
-  } else if (leadDroid < row7End && leadDroid > row7Beg) {
+  } else if (lead < row7End && lead > row7Beg) {
     // Row 7 (Right)
     moveDroidsRight(array)
-  } else if (leadDroid === row7End) {
+  } else if (lead === row7End) {
     // Down
     moveDroidsDown(array)
-  } else if (tailDroid > row8Beg && tailDroid < row8End) {
+  } else if (tail > row8Beg && tail < row8End) {
     // Row 8 (Left)
     moveDroidsLeft(array)
-  } else if (tailDroid === row8Beg) {
+  } else if (tail === row8Beg) {
     // Down
     moveDroidsDown(array)
-  } else if (leadDroid < row9End && leadDroid > row9Beg) {
+  } else if (lead < row9End && lead > row9Beg) {
     // Row 9 (Right)
     moveDroidsRight(array)
   }
 }
 
+
+
+
+
 const interval = setInterval(() => {
-  moveAllDroids(r1Droids, leadDroid, tailDroid)
-
-
-}, 1000)
+  moveAllDroids(r1Droids)
+  moveAllDroids(r2Droids)
+  moveAllDroids(r3Droids)
+}, 500)
 
 
 // * ------------Timed Movement--------------
