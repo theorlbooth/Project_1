@@ -76,7 +76,37 @@ document.addEventListener('keydown', (event) => {
 // * -------------------------------------------
 
 
-const arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
+const allDroids = [0, 1, 2, 3, 14, 15, 16, 17, 18, 19, 20, 21]
+
+
+let arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
+
+// let arrayAllDroids = []
+
+
+// function splitUpDroids(size) {
+//   for (let i = 0; i < allDroids.length; i += size) {
+//     arrayAllDroids.push(allDroids.slice(i, i + size))
+//   }
+//   return arrayAllDroids
+// }
+
+// function deleteDroid(value) {
+//   delete allDroids[allDroids.indexOf(value)]
+//   arrayAllDroids = []
+//   splitUpDroids(4)
+// }
+
+function deleteDroid(value) {
+  delete arrayAllDroids[0][arrayAllDroids[0].indexOf(value)]
+  delete arrayAllDroids[1][arrayAllDroids[1].indexOf(value)]
+  delete arrayAllDroids[2][arrayAllDroids[2].indexOf(value)]
+}
+
+
+// splitUpDroids(4)
+
+
 
 
 const arrayLeadsAndTails = [[0, 3], [14, 17], [18, 21]] // ! Put function together to do this automatically 
@@ -231,8 +261,6 @@ function moveDroidsDown(array) {
 function moveAllDroids(array, array2) {
   const lead = findLead(array2)
   const tail = findTail(array2)
-  console.log(lead)
-  console.log(tail)
   if (lead < row1End) {
     // Row 1 (Right)
     moveDroidsRight(array)
@@ -311,7 +339,7 @@ function moveAllDroids(array, array2) {
 //   moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0])
 //   moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1])
 //   moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2])
-// }, 1000)
+// }, 3000)
 
 
 
@@ -380,7 +408,7 @@ addLaser()
 
 let interval2 =
 
-// ! Need to close off event listener so can't be pressed over and over again (if allowing for only 1 laser at at time)
+  // ! Need to close off event listener so can't be pressed over and over again (if allowing for only 1 laser at at time)
   document.addEventListener('keydown', (event) => {
     const key = event.key
     if (key === ' ') {
@@ -403,11 +431,12 @@ let interval2 =
 
 
 
-
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
       cells[i].classList.remove('bDroid')
+      cells[i].classList.add('hit')
+      deleteDroid(i)
       clearInterval(interval2)
       removeLaser()
       laser = mFalcon

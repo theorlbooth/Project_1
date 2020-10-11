@@ -97,7 +97,6 @@ function removeTail(array) {
   cells[r1tailDroid].classList.remove('tail')
 }
 
-
 // =======================================
 
 let r1leadDroid = findLead(r1Droids)
@@ -108,3 +107,7 @@ let r3leadDroid = findLead(r3Droids)
 let r1tailDroid = findTail(r1Droids)
 let r2tailDroid = findTail(r2Droids)
 let r3tailDroid = findTail(r3Droids)
+
+// =======================================
+
+if (cells[droid].classList.contains('hit') !== true) {
