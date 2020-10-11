@@ -43,6 +43,25 @@ main {
   height: 11.11%;
 }
 
+
+
+
+.bDroid {
+  background-color: black;
+  background-size: contain;
+  background-image: url('https://bbts1.azureedge.net/images/p/full/2019/06/12bdcb4b-4d63-4ebb-8173-10181eab20bc.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.laser {
+  background-color: black;
+  background-size: contain;
+  background-image: url('Laser.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .mFalcon {
   background-color: white;
   background-size: contain;
@@ -51,10 +70,7 @@ main {
   background-position: center;
 }
 
-.bDroid {
+.bDroidHit {
   background-color: black;
-  background-size: contain;
-  background-image: url('https://bbts1.azureedge.net/images/p/full/2019/06/12bdcb4b-4d63-4ebb-8173-10181eab20bc.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
+  background-image: none;
 }
