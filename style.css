@@ -14,9 +14,9 @@ body {
 }
 
 header {
-  height: 350px;
+  height: 320px;
   width: 100%;
-  background-image: url('Star\ Wars\ 2.png');
+  background-image: url('Star\ Wars\ F.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -24,6 +24,8 @@ header {
 footer {
   height: 200px;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 main {
@@ -64,6 +66,26 @@ div {
   border: 1px solid lightgrey;
   width: 11.11%;
   height: 11.11%;
+}
+
+#start {
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  background-image: url('Start\ 2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 90px;
+}
+
+#rules {
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  background-image: url('Rules\ 2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 90px;
 }
 
 .bDroid {

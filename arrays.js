@@ -155,7 +155,7 @@ function mFalconHit() {
 let interval4 = setInterval(() => {
   const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
   addELaser(allDroids[randomIndex])
-}, 500)
+}, 1000)
 
 
 let interval5 = setInterval(() => {
@@ -183,3 +183,42 @@ let interval4 = setInterval(() => {
     }
   }
 }, 300)
+
+
+
+
+
+let interval5 = setInterval(() => {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('elaser') === true) {
+      removeELaser(i)
+      addELaser(i + width)
+      mFalconHit()
+      return
+    }
+  }
+}, 200)
+
+
+let interval5 = setInterval(() => {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('elaser') === true && cells[i] > row9Beg && cells[i] < row9End) {
+      removeELaser(i)
+      mFalconHit()
+    } else if (cells[i].classList.contains('elaser') === true) {
+      removeELaser(i)
+      addELaser(i + width)
+      mFalconHit()
+      return
+    }
+    }
+  }, 200)
+
+
+
+
+
+
+
+
+
