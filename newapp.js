@@ -1,4 +1,12 @@
 
+window.addEventListener("keydown", function (e) {
+  // space and arrow keys
+  if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    e.preventDefault();
+  }
+}, false)
+
+
 // * -------------------------------------------
 // * -------------Score & Lives ----------------
 // * -------------------------------------------
@@ -394,7 +402,7 @@ function moveAllDroids(array, array2, array3) {
 
 
 
-let laser 
+let laser
 
 function addLaser(index) {
   cells[index].classList.add('laser')
@@ -450,7 +458,7 @@ function droidHit() {
       cells[i].classList.add('hit')
       score += 100
       scoretally.innerHTML = score
-      
+
       removeLaser(i)
       laser = mFalcon
     }
@@ -496,7 +504,6 @@ function moveHitsDown(array) {
   }
   addHits(array)
 }
-
 
 
 
