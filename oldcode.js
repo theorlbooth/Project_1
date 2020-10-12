@@ -190,7 +190,6 @@ if (cells[droid].classList.contains('hit') !== true) {
 
 // =======================================
 
-
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
@@ -202,4 +201,81 @@ function droidHit() {
       laser = mFalcon
     }
   }
+}
+
+// =======================================
+
+function droidHit() {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
+      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+        arrayHitDroids[0].push(i)
+      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+        arrayHitDroids[1].push(i)
+      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+        arrayHitDroids[2].push(i)
+      }
+      cells[i].classList.remove('bDroid')
+      cells[i].classList.add('hit')
+      clearInterval(interval2)
+      removeLaser()
+      laser = mFalcon
+    }
+  }
+}
+
+// =======================================
+
+document.addEventListener('keydown', (event) => {
+  const key = event.key
+  if (key === 'ArrowUp' && !(laser < (width * (width - 2)))) {
+    cells[laser].classList.remove('laser')
+    laser -= width
+    cells[laser].classList.add('laser')
+  } else if (key === 'ArrowDown' && (laser < (width ** 2) - width)) {
+    cells[laser].classList.remove('laser')
+    laser += width
+    cells[laser].classList.add('laser')
+  } else if (key === 'ArrowLeft' && !(laser % width === 0)) {
+    cells[laser].classList.remove('laser')
+    laser -= 1
+    cells[laser].classList.add('laser')
+  } else if (key === 'ArrowRight' && !(laser % width === width - 1)) {
+    cells[laser].classList.remove('laser')
+    laser += 1
+    cells[laser].classList.add('laser')
+  }
+})
+
+
+// =======================================
+
+
+document.addEventListener('keydown', (event) => {
+  const key = event.key
+  if (key === ' ') {
+    laser = mFalcon
+    interval2 = setInterval(() => {
+      if (laser > 0) {
+        removeLaser()
+        moveLaser()
+        addLaser()
+        droidHit()
+      } else {
+        clearInterval(interval2)
+      }
+    }, 200)
+  } 
+})
+
+// =======================================
+
+
+for (let i = 0; i < width - mFalcon; i++) {
+  removeLaser()
+  moveLaser()
+  addLaser()
+  droidHit()
+  setTimeout(() => {
+  }, 200)
 }

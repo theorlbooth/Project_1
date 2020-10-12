@@ -81,6 +81,7 @@ const allDroids = [0, 1, 2, 3, 14, 15, 16, 17, 18, 19, 20, 21]
 
 let arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 
+// [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 // let arrayAllDroids = []
 
 
@@ -361,11 +362,11 @@ function moveAllDroids(array, array2, array3) {
 
 //  * -------- SetInterval ---------
 
-const interval = setInterval(() => {
-  moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
-  moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
-  moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
-}, 3000)
+// const interval = setInterval(() => {
+//   moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
+//   moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
+//   moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
+// }, 1000)
 
 
 
@@ -382,84 +383,39 @@ const interval = setInterval(() => {
 // * -------------------------------------------
 
 
-// ! This is making the laser move with the arrow keys => need to think of way to get the laser to start hidden, then appear at mFalcon - width
+
+let laser 
+
+function addLaser(index) {
+  cells[index].classList.add('laser')
+}
+
+
+function removeLaser(index) {
+  cells[index].classList.remove('laser')
+}
+
 
 document.addEventListener('keydown', (event) => {
   const key = event.key
-  if (key === 'ArrowUp' && !(laser < (width * (width - 2)))) {
-    cells[laser].classList.remove('laser')
-    laser -= width
-    cells[laser].classList.add('laser')
-  } else if (key === 'ArrowDown' && (laser < (width ** 2) - width)) {
-    cells[laser].classList.remove('laser')
-    laser += width
-    cells[laser].classList.add('laser')
-  } else if (key === 'ArrowLeft' && !(laser % width === 0)) {
-    cells[laser].classList.remove('laser')
-    laser -= 1
-    cells[laser].classList.add('laser')
-  } else if (key === 'ArrowRight' && !(laser % width === width - 1)) {
-    cells[laser].classList.remove('laser')
-    laser += 1
-    cells[laser].classList.add('laser')
+  if (key === ' ') {
+    laser = mFalcon - width
+    addLaser(laser)
   }
 })
 
-
-
-
-
-
-
-
-
-
-function addLaser() {
-  cells[laser].classList.add('laser')
-}
-
-
-function removeLaser() {
-  cells[laser].classList.remove('laser')
-}
-
-
-function moveLaser() {
-  laser -= width
-}
-
-let laser = mFalcon
-
-addLaser()
-
-let interval2 =
-
-  // ! Need to close off event listener so can't be pressed over and over again (if allowing for only 1 laser at at time)
-  document.addEventListener('keydown', (event) => {
-    const key = event.key
-    if (key === ' ') {
-      interval2 = setInterval(() => {
-        if (laser > 0) {
-          removeLaser()
-          moveLaser()
-          addLaser()
-          droidHit()
-        } else {
-          clearInterval(interval2)
-        }
-      }, 200)
-    } else {
-      laser = mFalcon
-      return
+let interval3 = setInterval(() => {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('laser') === true) {
+      removeLaser(i)
+      addLaser(i - width)
+      droidHit()
     }
-  })
+  }
+}, 200)
 
 
 
-
-
-
-// const arrayLeadsAndTails = [[0, 3], [14, 17], [18, 21]]
 
 //  * ------------- Hit Droids --------------
 
@@ -467,24 +423,6 @@ let interval2 =
 const arrayHitDroids = [[], [], []]
 
 
-// function droidHit() {
-//   for (let i = 0; i < cells.length; i++) {
-//     if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
-//       if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
-//         arrayHitDroids[0].push(i)
-//       } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
-//         arrayHitDroids[1].push(i)
-//       } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
-//         arrayHitDroids[2].push(i)
-//       }
-//       cells[i].classList.remove('bDroid')
-//       cells[i].classList.add('hit')
-//       clearInterval(interval2)
-//       removeLaser()
-//       laser = mFalcon
-//     }
-//   }
-// }
 
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
@@ -500,8 +438,7 @@ function droidHit() {
       }
       cells[i].classList.remove('bDroid')
       cells[i].classList.add('hit')
-      clearInterval(interval2)
-      removeLaser()
+      removeLaser(i)
       laser = mFalcon
     }
   }
@@ -546,3 +483,11 @@ function moveHitsDown(array) {
   }
   addHits(array)
 }
+
+
+
+
+
+
+
+

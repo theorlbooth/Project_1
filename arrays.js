@@ -51,3 +51,82 @@ const minDroidArray = minDroids()
 
 let maxDroidArray = maxDroids()
 
+
+
+
+
+
+
+
+
+
+
+// =======================================================
+// =======================================================
+// =======================================================
+
+
+
+
+
+
+
+
+// =============== Multiple lasers ===============
+
+
+
+
+
+
+function addLaser(index) {
+  cells[index].classList.add('laser')
+}
+
+
+function removeLaser(index) {
+  cells[index].classList.remove('laser')
+}
+
+
+document.addEventListener('keydown', (event) => {
+  const key = event.key
+  if (key === ' ') {
+    laser = mFalcon - width
+    addLaser()
+  }
+})
+
+let interval3 = setInterval(() => {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('laser') === true) {
+      removeLaser(i)
+      addLaser(i - width)
+      droidHit()
+    }
+  }
+}, 200);
+
+
+
+function droidHit() {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('hit') === true && cells[i].classList.contains('laser') === true) {
+      return
+    } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
+      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+        arrayHitDroids[0].push(i)
+      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+        arrayHitDroids[1].push(i)
+      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+        arrayHitDroids[2].push(i)
+      }
+      cells[i].classList.remove('bDroid')
+      cells[i].classList.add('hit')
+      clearInterval(interval2)
+      removeLaser()
+      laser = mFalcon
+    }
+  }
+}
+

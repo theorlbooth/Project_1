@@ -15,6 +15,9 @@ body {
 header {
   height: 200px;
   width: 100%;
+  background-image: url('Star\ Wars.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 footer {
@@ -27,6 +30,10 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+  color: white
 }
 
 .grid {
