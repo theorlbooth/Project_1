@@ -10,6 +10,7 @@ body {
   align-items: center;
   margin: auto;
   background-color: black;
+  width: auto;
 }
 
 header {
@@ -27,15 +28,30 @@ footer {
 
 main {
   display: flex;
+}
+
+h2 {
+  color: white;
+  margin: 0px;
+  text-align: center;
+  padding-bottom: 20px;;
+}
+
+h3 {
+  color: white;
+}
+
+aside {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  width: 200px;
+  text-align: center;
 }
 
-h1 {
-  color: white
+div {
+  color: white;
 }
-
 .grid {
   display: flex;
   border: 1px solid lightgrey;

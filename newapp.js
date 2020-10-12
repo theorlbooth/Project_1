@@ -1,5 +1,15 @@
 
 // * -------------------------------------------
+// * -------------Score & Lives ----------------
+// * -------------------------------------------
+
+let score = 0
+let lives = 3
+
+const scoretally = document.querySelector('#score')
+const livestally = document.querySelector('#lives')
+
+// * -------------------------------------------
 // * ------------------ Grid -------------------
 // * -------------------------------------------
 
@@ -436,8 +446,11 @@ function droidHit() {
       } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
         arrayHitDroids[2].push(i)
       }
-      cells[i].classList.remove('bDroid')
+      // cells[i].classList.remove('bDroid')
       cells[i].classList.add('hit')
+      score += 100
+      scoretally.innerHTML = score
+      
       removeLaser(i)
       laser = mFalcon
     }
