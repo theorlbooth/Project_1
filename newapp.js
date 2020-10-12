@@ -97,11 +97,11 @@ let arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 //   splitUpDroids(4)
 // }
 
-function deleteDroid(value) {
-  delete arrayAllDroids[0][arrayAllDroids[0].indexOf(value)]
-  delete arrayAllDroids[1][arrayAllDroids[1].indexOf(value)]
-  delete arrayAllDroids[2][arrayAllDroids[2].indexOf(value)]
-}
+// function deleteDroid(value) {
+//   delete arrayAllDroids[0][arrayAllDroids[0].indexOf(value)]
+// delete arrayAllDroids[1][arrayAllDroids[1].indexOf(value)]
+// delete arrayAllDroids[2][arrayAllDroids[2].indexOf(value)]
+// }
 
 
 // splitUpDroids(4)
@@ -199,6 +199,14 @@ function addDroids(array) {
   })
 }
 
+// function addDroids(array) {
+//   array.forEach((droid) => {
+//     if (!cells[droid].classList.contains('hit')) {
+//       cells[droid].classList.add('bDroid')
+//     }
+//   })
+// }
+
 function removeDroids(array) {
   array.forEach((droid) => {
     cells[droid].classList.remove('bDroid')
@@ -256,90 +264,108 @@ function moveDroidsDown(array) {
 
 
 
+
+
 //  * -------- Moving All ---------
 
-function moveAllDroids(array, array2) {
+function moveAllDroids(array, array2, array3) {
   const lead = findLead(array2)
   const tail = findTail(array2)
   if (lead < row1End) {
     // Row 1 (Right)
     moveDroidsRight(array)
     moveLAndTRight(array2)
+    moveHitsRight(array3)
   } else if (lead === row1End) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (tail > row2Beg && tail < row2End) {
     // Row 2 (Left)
     moveDroidsLeft(array)
     moveLAndTLeft(array2)
+    moveHitsLeft(array3)
   } else if (tail === row2Beg) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (lead < row3End && lead > row3Beg) {
     // Row 3 (Right)
     moveDroidsRight(array)
     moveLAndTRight(array2)
+    moveHitsRight(array3)
   } else if (lead === row3End) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (tail > row4Beg && tail < row4End) {
     // Row 4 (Left)
     moveDroidsLeft(array)
     moveLAndTLeft(array2)
+    moveHitsLeft(array3)
   } else if (tail === row4Beg) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (lead < row5End && lead > row5Beg) {
     // Row 5 (Right)
     moveDroidsRight(array)
     moveLAndTRight(array2)
+    moveHitsRight(array3)
   } else if (lead === row5End) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (tail > row6Beg && tail < row6End) {
     // Row 6 (Left)
     moveDroidsLeft(array)
     moveLAndTLeft(array2)
+    moveHitsLeft(array3)
   } else if (tail === row6Beg) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (lead < row7End && lead > row7Beg) {
     // Row 7 (Right)
     moveDroidsRight(array)
     moveLAndTRight(array2)
+    moveHitsRight(array3)
   } else if (lead === row7End) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (tail > row8Beg && tail < row8End) {
     // Row 8 (Left)
     moveDroidsLeft(array)
     moveLAndTLeft(array2)
+    moveHitsLeft(array3)
   } else if (tail === row8Beg) {
     // Down
     moveDroidsDown(array)
     moveLAndTDown(array2)
+    moveHitsDown(array3)
   } else if (lead < row9End && lead > row9Beg) {
     // Row 9 (Right)
     moveDroidsRight(array)
     moveLAndTRight(array2)
+    moveHitsRight(array3)
   }
 }
 
-
 //  * -------- SetInterval ---------
 
-// const interval = setInterval(() => {
-//   moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0])
-//   moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1])
-//   moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2])
-// }, 3000)
+const interval = setInterval(() => {
+  moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
+  moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
+  moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
+}, 3000)
 
 
 
@@ -431,15 +457,92 @@ let interval2 =
 
 
 
+
+
+// const arrayLeadsAndTails = [[0, 3], [14, 17], [18, 21]]
+
+//  * ------------- Hit Droids --------------
+
+
+const arrayHitDroids = [[], [], []]
+
+
+// function droidHit() {
+//   for (let i = 0; i < cells.length; i++) {
+//     if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
+//       if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+//         arrayHitDroids[0].push(i)
+//       } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+//         arrayHitDroids[1].push(i)
+//       } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+//         arrayHitDroids[2].push(i)
+//       }
+//       cells[i].classList.remove('bDroid')
+//       cells[i].classList.add('hit')
+//       clearInterval(interval2)
+//       removeLaser()
+//       laser = mFalcon
+//     }
+//   }
+// }
+
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
-    if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
+    if (cells[i].classList.contains('hit') === true && cells[i].classList.contains('laser') === true) {
+      return
+    } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
+      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+        arrayHitDroids[0].push(i)
+      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+        arrayHitDroids[1].push(i)
+      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+        arrayHitDroids[2].push(i)
+      }
       cells[i].classList.remove('bDroid')
       cells[i].classList.add('hit')
-      deleteDroid(i)
       clearInterval(interval2)
       removeLaser()
       laser = mFalcon
     }
   }
+}
+
+//  * ------------- Add/Remove Hits --------------
+
+function addHits(array) {
+  array.forEach((hit) => {
+    cells[hit].classList.add('hit')
+  })
+}
+
+function removeHits(array) {
+  array.forEach((hit) => {
+    cells[hit].classList.remove('hit')
+  })
+}
+
+//  * ------------- Hits Movement --------------
+
+function moveHitsRight(array) {
+  removeHits(array)
+  for (let i = 0; i < array.length; i++) {
+    array[i] += 1
+  }
+  addHits(array)
+}
+
+function moveHitsLeft(array) {
+  removeHits(array)
+  for (let i = 0; i < array.length; i++) {
+    array[i] -= 1
+  }
+  addHits(array)
+}
+
+function moveHitsDown(array) {
+  removeHits(array)
+  for (let i = 0; i < array.length; i++) {
+    array[i] += width
+  }
+  addHits(array)
 }
