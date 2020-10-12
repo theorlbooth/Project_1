@@ -95,3 +95,10 @@ div {
   background-position: center;
 }
 
+.elaser {
+  background-color: black;
+  background-size: contain;
+  background-image: url('ELaser.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}

@@ -116,11 +116,11 @@ let arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 //   splitUpDroids(4)
 // }
 
-// function deleteDroid(value) {
-//   delete arrayAllDroids[0][arrayAllDroids[0].indexOf(value)]
-// delete arrayAllDroids[1][arrayAllDroids[1].indexOf(value)]
-// delete arrayAllDroids[2][arrayAllDroids[2].indexOf(value)]
-// }
+function deleteDroid(value) {
+  delete arrayAllDroids[0][arrayAllDroids[0].indexOf(value)]
+  delete arrayAllDroids[1][arrayAllDroids[1].indexOf(value)]
+  delete arrayAllDroids[2][arrayAllDroids[2].indexOf(value)]
+}
 
 
 // splitUpDroids(4)
@@ -235,17 +235,17 @@ function removeDroids(array) {
 
 // ! Put function together for below:
 addDroids(arrayAllDroids[0])
-addDroids(arrayAllDroids[1])
-addDroids(arrayAllDroids[2])
+// addDroids(arrayAllDroids[1])
+// addDroids(arrayAllDroids[2])
 
 addLead(arrayLeadsAndTails[0][1])
 addTail(arrayLeadsAndTails[0][0])
 
-addLead(arrayLeadsAndTails[1][1])
-addTail(arrayLeadsAndTails[1][0])
+// addLead(arrayLeadsAndTails[1][1])
+// addTail(arrayLeadsAndTails[1][0])
 
-addLead(arrayLeadsAndTails[2][1])
-addTail(arrayLeadsAndTails[2][0])
+// addLead(arrayLeadsAndTails[2][1])
+// addTail(arrayLeadsAndTails[2][0])
 // ! ==============================
 
 
@@ -380,11 +380,11 @@ function moveAllDroids(array, array2, array3) {
 
 //  * -------- SetInterval ---------
 
-// const interval = setInterval(() => {
-//   moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
-//   moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
-//   moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
-// }, 1000)
+const interval = setInterval(() => {
+  moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
+  // moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
+  // moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
+}, 3000)
 
 
 
@@ -433,8 +433,6 @@ let interval3 = setInterval(() => {
 }, 200)
 
 
-
-
 //  * ------------- Hit Droids --------------
 
 
@@ -449,21 +447,24 @@ function droidHit() {
     } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
       if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
         arrayHitDroids[0].push(i)
+        delete arrayAllDroids[0][arrayAllDroids[0].indexOf(i)]
       } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
         arrayHitDroids[1].push(i)
+        delete arrayAllDroids[1][arrayAllDroids[1].indexOf(i)]
       } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
         arrayHitDroids[2].push(i)
+        delete arrayAllDroids[2][arrayAllDroids[2].indexOf(i)]
       }
       // cells[i].classList.remove('bDroid')
       cells[i].classList.add('hit')
       score += 100
       scoretally.innerHTML = score
-
       removeLaser(i)
       laser = mFalcon
     }
   }
 }
+
 
 //  * ------------- Add/Remove Hits --------------
 
@@ -507,7 +508,44 @@ function moveHitsDown(array) {
 
 
 
+// =============== Multiple ELasers ===============
+
+function addELaser(index) {
+  cells[index].classList.add('elaser')
+}
+
+function removeELaser(index) {
+  cells[index].classList.remove('elaser')
+}
+
+function mFalconHit() {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('mFalcon') === true && cells[i].classList.contains('elaser') === true) {
+      lives -= 1
+      livestally.innerHTML = lives
+      removeELaser(i)
+    }
+  }
+}
+
+// let interval4 = setInterval(() => {
+//   console.log(arrayAllDroids)
+//   const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
+//   addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
+//   console.log(randomIndex)
+//   console.log(arrayAllDroids.flat(Infinity))
+// }, 2000)
 
 
+// let interval5 = setInterval(() => {
+//   for (let i = 0; i < cells.length; i++) {
+//     if (cells[i].classList.contains('elaser') === true) {
+//       removeELaser(i)
+//       addELaser(i + width)
+//       mFalconHit()
+//       return
+//     }
+//   }
+// }, 200)
 
 

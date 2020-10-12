@@ -130,3 +130,56 @@ function droidHit() {
   }
 }
 
+
+// =============== Multiple ELasers ===============
+
+
+function addELaser(index) {
+  cells[index].classList.add('elaser')
+}
+
+function removeELaser(index) {
+  cells[index].classList.remove('elaser')
+}
+
+function mFalconHit() {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('mFalcon') === true && cells[i].classList.contains('elaser') === true) {
+      lives -= 1
+      livestally.innerHTML = lives
+      removeELaser(i)
+    }
+  }
+}
+
+let interval4 = setInterval(() => {
+  const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
+  addELaser(allDroids[randomIndex])
+}, 500)
+
+
+let interval5 = setInterval(() => {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('elaser') === true) {
+      removeELaser(i)
+      addELaser(i + width)
+      mFalconHit()
+      return
+    }
+  }
+}, 200)
+
+
+
+
+let interval4 = setInterval(() => {
+  const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
+  addELaser(allDroids[randomIndex])
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains('elaser') === true) {
+      removeELaser(i)
+      addELaser(i + width)
+      mFalconHit()
+    }
+  }
+}, 300)
