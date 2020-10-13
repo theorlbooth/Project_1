@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -35,8 +36,20 @@
           <header>GAME OVER</header>
           <p>You have been destroyed!</p>
           <section class="modal-buttons">
-            <button class="m-button">RESTART</button>
-            <button class="m-button">QUIT</button>
+            <button id="restart-button" class="m-button">RESTART</button>
+            <button id="quit-button" class="m-button">QUIT</button>
+          </section>
+        </div>
+      </div>
+
+      <div id="gameover2-modal" class="modal">
+        <div id="gameover2-modal-content" class="modal-content">
+          <span id="span-4" class="close">&times;</span>
+          <header>GAME OVER</header>
+          <p>You have been overrun!</p>
+          <section class="modal-buttons">
+            <button id="restart2-button" class="m-button">RESTART</button>
+            <button id="quit2-button" class="m-button">QUIT</button>
           </section>
         </div>
       </div>
@@ -46,9 +59,10 @@
           <span id="span-2" class="close">&times;</span>
           <header>LEVEL COMPLETE</header>
           <p>LEVEL 1</p>
+          
           <section class="modal-buttons">
-            <button class="m-button">RESTART</button>
-            <button class="m-button">NEXT LEVEL</button>
+            <button id="restart3-button" class="m-button">RESTART</button>
+            <button id="next-level-button" class="m-button">NEXT LEVEL</button>
           </section>
         </div>
       </div>
@@ -61,7 +75,19 @@
       <div id="rules-modal" class="modal">
         <div id="rules-modal-content" class="modal-content">
           <span id="span-3" class="close">&times;</span>
-          <p>RULES</p>
+          <h1>RULES</h1>
+          <div>
+            <p>
+              <br> ↑  =  up
+              <br> ↓  =  down
+              <br> ←  =  left
+              <br> →  =  right
+              <br> space  =  shoot
+              <br>
+              <br>
+              <br> You have 3 lives - destroy the enemy before they destroy you!
+            </p>
+          </div>
         </div>
       </div>
     </article>

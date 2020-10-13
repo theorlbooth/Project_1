@@ -15,6 +15,10 @@ function gameOver() {
   gameOverModal.style.display = 'block'
 }
 
+function gameOver2() {
+  gameOver2Modal.style.display = 'block'
+}
+
 function gameWon() {
   winModal.style.display = 'block'
 }
@@ -305,14 +309,37 @@ function moveDroidsDown(array) {
 }
 
 
+// ==================================
+
+const lastRow = []
+
+for (let i = 0; i < width; i++) {
+  lastRow[i] = (width * (width - 1)) + i
+}
 
 
+function findLandDroids() {
+  for (let i = 0; i < lastRow.length; i++) {
+    if (cells[lastRow[i]].classList.contains('bDroid')) {
+      gameOver2()
+      clearInterval(interval)
+      clearInterval(interval2)
+      clearInterval(interval3)
+      clearInterval(interval4)
+    }
+  } 
+}
+
+
+
+// ==================================
 
 //  * -------- Moving All ---------
 
 function moveAllDroids(array, array2, array3) {
   const lead = findLead(array2)
   const tail = findTail(array2)
+  findLandDroids()
   if (lead < row1End) {
     // Row 1 (Right)
     moveDroidsRight(array)
@@ -541,7 +568,7 @@ function moveHitsDown(array) {
 
 // =============== Multiple ELasers ===============
 
-let interval 
+let interval
 let interval2
 let interval3
 let interval4
@@ -573,7 +600,6 @@ function mFalconHit() {
     }
   }
 }
-
 
 
 
@@ -631,6 +657,16 @@ span1.onclick = function () {
 }
 
 
+// ------- Game Over 2 Modal -------
+
+const gameOver2Modal = document.querySelector('#gameover2-modal')
+
+const span4 = document.querySelector('#span-4')
+
+span4.onclick = function () {
+  gameOver2Modal.style.display = 'none'
+}
+
 // ------- Win Modal -------
 
 const winModal = document.querySelector('#win-modal')
@@ -654,8 +690,8 @@ span2.onclick = function () {
 
 const startButton = document.querySelector('#start')
 
-startButton.onclick = function () {
 
+function startGame() {
   interval = setInterval(() => {
     moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
     moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
@@ -690,7 +726,44 @@ startButton.onclick = function () {
       }
     }
   }, 200)
-
 }
 
 
+startButton.onclick = function() {
+  startGame()
+}
+
+
+const quitButton = document.querySelector('#quit-button')
+
+quitButton.onclick = function () {
+  window.location.reload()
+}
+
+const quitButton2 = document.querySelector('#quit2-button')
+
+quitButton2.onclick = function () {
+  window.location.reload()
+}
+
+
+const restartButton = document.querySelector('#restart-button')
+
+restartButton.onclick = function () {
+  document.location.reload()
+  startGame()
+}
+
+const restartButton2 = document.querySelector('#restart2-button')
+
+restartButton2.onclick = function () {
+  document.location.reload()
+  startGame()
+}
+
+const restartButton3 = document.querySelector('#restart3-button')
+
+restartButton3.onclick = function () {
+  document.location.reload()
+  startGame()
+}

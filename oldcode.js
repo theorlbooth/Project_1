@@ -279,3 +279,18 @@ for (let i = 0; i < width - mFalcon; i++) {
   setTimeout(() => {
   }, 200)
 }
+
+
+// =======================================
+
+
+//  !
+// let interval5 = setInterval(() => {
+//   for (let i = 0; i < cells.length; i++) {
+//     if (cells[i].classList.contains('laser') && cells[i].classList.contains('elaser')) {
+//       cells[i].classList.remove('laser')
+//       cells[i].classList.remove('elaser')
+//     }
+//   }
+// }, 20)
+//  !
