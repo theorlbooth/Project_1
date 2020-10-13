@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="level1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header id="main-header"></header>
+
+  <main>
+    <article>
+      <aside>
+        <h3>SCORE:</h3>
+        <div id="score">0</div>
+      </aside>
+      <section>
+        <h2>LEVEL 1</h2>
+        <div class="grid">
+        </div>
+      </section>
+      <aside>
+        <h3>LIVES:</h3>
+        <div id="lives">3</div>
+      </aside>
+
+      <div id="gameover-modal" class="modal">
+        <div id="gameover-modal-content" class="modal-content">
+          <span id="span-1" class="close">&times;</span>
+          <header>GAME OVER</header>
+          <p>You have been destroyed!</p>
+          <section class="modal-buttons">
+            <button id="restart-button" class="m-button">RESTART</button>
+            <button id="quit-button" class="m-button">QUIT</button>
+          </section>
+        </div>
+      </div>
+
+      <div id="gameover2-modal" class="modal">
+        <div id="gameover2-modal-content" class="modal-content">
+          <span id="span-4" class="close">&times;</span>
+          <header>GAME OVER</header>
+          <p>You have been overrun!</p>
+          <section class="modal-buttons">
+            <button id="restart2-button" class="m-button">RESTART</button>
+            <button id="quit2-button" class="m-button">QUIT</button>
+          </section>
+        </div>
+      </div>
+
+      <div id="win-modal" class="modal">
+        <div id="win-modal-content" class="modal-content">
+          <span id="span-2" class="close">&times;</span>
+          <header>LEVEL COMPLETE</header>
+          <p>LEVEL 1</p>
+          
+          <section class="modal-buttons">
+            <button id="restart3-button" class="m-button">RESTART</button>
+            <button id="next-level-button" class="m-button">NEXT LEVEL</button>
+          </section>
+        </div>
+      </div>
+    </article>
+
+    <article id="start-rules">
+      <button id="start"></button>
+      <button id="rules"></button>
+      <div id="rules-modal" class="modal">
+        <div id="rules-modal-content" class="modal-content">
+          <span id="span-3" class="close">&times;</span>
+          <h1>RULES</h1>
+          <div>
+            <p>
+              <br> ↑  =  up
+              <br> ↓  =  down
+              <br> ←  =  left
+              <br> →  =  right
+              <br> space  =  shoot
+              <br>
+              <br>
+              <br> You have 3 lives - destroy the enemy before they destroy you!
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer></footer>
+
+  <script src="level1.js"></script>
+
+</body>
+</html>

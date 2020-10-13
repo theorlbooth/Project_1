@@ -1,0 +1,233 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: black;
+  font-family: 'Poller One', cursive;
+}
+
+#main-header {
+  height: 320px;
+  width: 100%;
+  background-image: url('/pictures/Star\ Wars\ F.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+footer {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: #FFE81F;
+  margin: 0px;
+  text-align: center;
+  padding-bottom: 20px;;
+}
+
+h3 {
+  color: #FFE81F
+}
+
+article {
+  display: flex;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  text-align: center;
+}
+
+div {
+  color: #FFE81F
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 450px;
+  height: 450px;
+}
+
+.cell {
+  border: 1px solid lightgrey;
+  width: 11.11%;
+  height: 11.11%;
+}
+
+.bDroid {
+  background-color: black;
+  background-size: contain;
+  background-image: url('https://bbts1.azureedge.net/images/p/full/2019/06/12bdcb4b-4d63-4ebb-8173-10181eab20bc.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hit {
+  background-color: black;
+  background-image: none;
+}
+
+.laser {
+  background-color: black;
+  background-size: contain;
+  background-image: url('/pictures/Laser.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mFalcon {
+  background-color: white;
+  background-size: contain;
+  background-image: url('https://www.pikpng.com/pngl/m/30-300944_bleed-area-may-not-be-visible-millennium-falcon.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.elaser {
+  background-color: black;
+  background-size: contain;
+  background-image: url('/pictures/ELaser.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#lives, #score{
+  font-size: 24px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow:auto;
+  background-color: black;
+  color: #FFE81F;
+  font-family: 'Poller One', cursive;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: #FFE81F;
+  padding: 20px;
+  border: 2px solid #FFE81F;
+  width: 100%;
+  background-image: url('https://image.freepik.com/free-vector/warp-stars-zoom-blue-galaxy-war-vector-abstract-background_53562-2318.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  height: 500px;
+  width: 500px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.close {
+  color: #FFE81F;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.close:hover,
+.close:focus {
+  color: #FFE81F;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#gameover-modal-content header {
+  font-size: 50px;
+  margin-top: 100px;
+}
+
+#gameover2-modal-content header {
+  font-size: 50px;
+  margin-top: 100px;
+}
+
+#win-modal-content header {
+  font-size: 50px;
+  margin-top: 80px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.m-button {
+  height: 50px;
+  width: 100px;
+  border: 2px solid #FFE81F;
+  margin-top: 50px;
+  color: #FFE81F;
+  background: none;
+  font-weight: bold;
+}
+
+
+#start-rules {
+  display: flex;
+  justify-content: center;
+}
+
+#start {
+  height: 50px;
+  width: 100px;
+  background-size: 80%;
+  background-image: url('/pictures/Start\ 2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 20px;
+  margin-right: 90px;
+  background-color: black;
+  border: 1px solid #FFE81F
+}
+
+#rules {
+  height: 50px;
+  width: 100px;
+  background-size: 80%;
+  background-image: url('/pictures/Rules\ 2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 20px;
+  margin-left: 90px;
+  background-color: black;
+  border: 1px solid #FFE81F
+}
+
+
+
+#rules-modal-content h1 {
+  margin: 0;
+}
+
+
+.red {
+  background-color: red;
+}

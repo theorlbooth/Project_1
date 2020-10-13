@@ -294,3 +294,57 @@ for (let i = 0; i < width - mFalcon; i++) {
 //   }
 // }, 20)
 //  !
+
+
+// =======================================
+
+
+function splitUpDroids(size) {
+  for (let i = 0; i < allDroids.length; i += size) {
+    arrayAllDroids.push(allDroids.slice(i, i + size))
+  }
+  return arrayAllDroids
+}
+
+function deleteDroid(value) {
+  delete allDroids[allDroids.indexOf(value)]
+  arrayAllDroids = []
+  splitUpDroids(4)
+}
+
+function deleteDroid(value) {
+  delete arrayAllDroids[0][arrayAllDroids[0].indexOf(value)]
+  delete arrayAllDroids[1][arrayAllDroids[1].indexOf(value)]
+  delete arrayAllDroids[2][arrayAllDroids[2].indexOf(value)]
+}
+
+
+splitUpDroids(4)
+
+
+// =======================================
+
+
+const leadDroids = []
+const tailDroids = []
+
+function findLeadAndTail(array) {
+  for (let i = 0; i < arrayAllDroids.length; i++) {
+    leadDroids.push(findLead(array[i]))
+    tailDroids.push(findTail(array[i]))
+  }
+}
+
+findLeadAndTail(arrayAllDroids)
+
+// =======================================
+
+function addDroids(array) {
+  array.forEach((droid) => {
+    if (!cells[droid].classList.contains('hit')) {
+      cells[droid].classList.add('bDroid')
+    }
+  })
+}
+
+// =======================================
