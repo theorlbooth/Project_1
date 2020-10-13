@@ -549,3 +549,22 @@ function mFalconHit() {
 // }, 200)
 
 
+
+
+
+
+const modal = document.querySelector('#myModal')
+
+
+const button = document.querySelector('#rules')
+
+const span = document.querySelector('.close')
+
+button.onclick = function() {
+  modal.style.display = 'block'
+}
+
+span.onclick = function() {
+  modal.style.display = 'none'
+}
+

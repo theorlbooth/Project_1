@@ -30,6 +30,7 @@ footer {
 
 main {
   display: flex;
+  flex-direction: column;
 }
 
 h2 {
@@ -41,6 +42,15 @@ h2 {
 
 h3 {
   color: #FFE81F
+}
+
+article {
+  display: flex;
+}
+
+#start-rules {
+  display: flex;
+  justify-content: center;
 }
 
 aside {
@@ -76,6 +86,8 @@ div {
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 90px;
+  background-color: black;
+  border: none;
 }
 
 #rules {
@@ -86,6 +98,8 @@ div {
   background-repeat: no-repeat;
   background-position: center;
   margin-left: 90px;
+  background-color: black;
+  border: none;
 }
 
 .bDroid {
@@ -123,4 +137,39 @@ div {
   background-image: url('ELaser.png');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow:auto;
+  background-color: black;
+  color: #FFE81F;
+}
+
+.modal-content {
+  background-color: black;
+  color: #FFE81F;
+  padding: 20px;
+  border: 2px solid #FFE81F;
+  width: 100%;
+}
+
+.close {
+  color: #FFE81F;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #FFE81F;
+  text-decoration: none;
+  cursor: pointer;
 }
