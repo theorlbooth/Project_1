@@ -10,36 +10,61 @@
 
 <body>
 
-  <header></header>
+  <header id="main-header"></header>
 
   <main>
-    
-    <article>
-    <aside>
-      <h3>SCORE:</h3>
-      <div id="score">0</div>
-    </aside>
-    <section>
-      <h2>LEVEL 1</h2>
-      <div class="grid">
-      </div>
-    </section>
-    <aside>
-      <h3>LIVES:</h3>
-      <div id="lives">3</div>
-    </aside>
-  </article>
 
-  <article id="start-rules">
-    <button id="start"></button>
-    <button id="rules"></button>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Rules of the game</p>
+    <article>
+      <aside>
+        <h3>SCORE:</h3>
+        <div id="score">0</div>
+      </aside>
+      <section>
+        <h2>LEVEL 1</h2>
+        <div class="grid">
+        </div>
+      </section>
+      <aside>
+        <h3>LIVES:</h3>
+        <div id="lives">3</div>
+      </aside>
+
+      <div id="gameover-modal" class="modal">
+        <div id="gameover-modal-content" class="modal-content">
+          <span id="span-1" class="close">&times;</span>
+          <header>GAME OVER</header>
+          <p>You have been destroyed!</p>
+          <section class="modal-buttons">
+            <button class="m-button">RESTART</button>
+            <button class="m-button">QUIT</button>
+          </section>
+        </div>
       </div>
-    </div>
-  </article>
+
+      <div id="win-modal" class="modal">
+        <div id="win-modal-content" class="modal-content">
+          <span id="span-2" class="close">&times;</span>
+          <header>LEVEL COMPLETE</header>
+          <p>LEVEL 1</p>
+          <section class="modal-buttons">
+            <button class="m-button">RESTART</button>
+            <button class="m-button">NEXT LEVEL</button>
+          </section>
+        </div>
+      </div>
+
+    </article>
+
+    <article id="start-rules">
+      <button id="start"></button>
+      <button id="rules"></button>
+      <div id="rules-modal" class="modal">
+        <div id="rules-modal-content" class="modal-content">
+          <span id="span-3" class="close">&times;</span>
+          <p>RULES</p>
+        </div>
+      </div>
+    </article>
 
   </main>
 
