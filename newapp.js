@@ -97,11 +97,15 @@ document.addEventListener('keydown', (event) => {
 const allDroids = [0, 1, 2, 3, 14, 15, 16, 17, 18, 19, 20, 21]
 
 
-let arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
+let arrayAllDroids = [[0, 1, 2, 3, 4, 5, 6], [11, 12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23, 24]]
+
+// , [18, 19, 20, 21, 22]
 
 // [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 // let arrayAllDroids = []
 
+const arrayLeadsAndTails = [[0, 6], [11, 17], [18, 24]] // ! Put function together to do this automatically 
+// ! However if done manually, would allow for lead/tail to be placed wherever (i.e different starting positions for droids)
 
 // function splitUpDroids(size) {
 //   for (let i = 0; i < allDroids.length; i += size) {
@@ -128,8 +132,7 @@ let arrayAllDroids = [[0, 1, 2, 3], [14, 15, 16, 17], [18, 19, 20, 21]]
 
 
 
-const arrayLeadsAndTails = [[0, 3], [14, 17], [18, 21]] // ! Put function together to do this automatically 
-// ! However if done manually, would allow for lead/tail to be placed wherever (i.e different starting positions for droids)
+
 
 
 // const leadDroids = []
@@ -384,7 +387,7 @@ function moveAllDroids(array, array2, array3) {
 //   moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
 //   moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
 //   moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
-// }, 3000)
+// }, 1000)
 
 
 
@@ -422,15 +425,15 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
-let interval3 = setInterval(() => {
-  for (let i = 0; i < cells.length; i++) {
-    if (cells[i].classList.contains('laser') === true) {
-      removeLaser(i)
-      addLaser(i - width)
-      droidHit()
-    }
-  }
-}, 200)
+// let interval3 = setInterval(() => {
+//   for (let i = 0; i < cells.length; i++) {
+//     if (cells[i].classList.contains('laser') === true) {
+//       removeLaser(i)
+//       addLaser(i - width)
+//       droidHit()
+//     }
+//   }
+// }, 200)
 
 
 //  * ------------- Hit Droids --------------
@@ -447,13 +450,13 @@ function droidHit() {
     } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
       if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
         arrayHitDroids[0].push(i)
-        delete arrayAllDroids[0].splice([arrayAllDroids[0].indexOf(i)],1)
+        delete arrayAllDroids[0].splice([arrayAllDroids[0].indexOf(i)], 1)
       } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
         arrayHitDroids[1].push(i)
-        delete arrayAllDroids[1].splice([arrayAllDroids[1].indexOf(i)],1)
+        delete arrayAllDroids[1].splice([arrayAllDroids[1].indexOf(i)], 1)
       } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
         arrayHitDroids[2].push(i)
-        delete arrayAllDroids[2].splice([arrayAllDroids[2].indexOf(i)],1)
+        delete arrayAllDroids[2].splice([arrayAllDroids[2].indexOf(i)], 1)
       }
       cells[i].classList.remove('bDroid')
       cells[i].classList.add('hit')
@@ -556,15 +559,58 @@ function mFalconHit() {
 const modal = document.querySelector('#myModal')
 
 
-const button = document.querySelector('#rules')
+const rulesButton = document.querySelector('#rules')
 
 const span = document.querySelector('.close')
 
-button.onclick = function() {
+rulesButton.onclick = function () {
   modal.style.display = 'block'
 }
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = 'none'
 }
 
+
+
+
+const startButton = document.querySelector('#start')
+
+startButton.onclick = function () {
+
+  const interval = setInterval(() => {
+    moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
+    moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
+    moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
+
+
+  }, 3000)
+
+  let interval3 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('laser') === true) {
+        removeLaser(i)
+        addLaser(i - width)
+        droidHit()
+      }
+    }
+  }, 200)
+
+  let interval4 = setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
+    addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
+  }, 2000)
+
+
+  let interval5 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('elaser') === true) {
+        removeELaser(i)
+        addELaser(i + width)
+        mFalconHit()
+        return
+      }
+    }
+  }, 200)
+
+}

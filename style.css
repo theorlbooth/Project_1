@@ -10,7 +10,6 @@ body {
   align-items: center;
   margin: auto;
   background-color: black;
-  width: auto;
 }
 
 header {
@@ -158,6 +157,10 @@ div {
   padding: 20px;
   border: 2px solid #FFE81F;
   width: 100%;
+  background-image: url('https://image.freepik.com/free-vector/warp-stars-zoom-blue-galaxy-war-vector-abstract-background_53562-2318.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .close {
