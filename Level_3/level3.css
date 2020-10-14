@@ -297,3 +297,19 @@ ol {
   margin-top: 30px;
   background-color: black;
 }
+
+.stormtrooper {
+  background-color: black;
+  background-size: contain;
+  background-image: url('/pictures/Stormtrooper.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hitstormtrooper {
+  background-color: black;
+  background-size: contain;
+  background-image: url('/pictures/HitStormtrooper.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
