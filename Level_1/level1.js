@@ -375,95 +375,79 @@ function findLandDroids() {
 
 // * === Move All ===
 
+function moveAllDown(array, array2, array3) {
+  moveDroidsDown(array)
+  moveLAndTDown(array2)
+  moveHitsDown(array3)
+}
+
+function moveAllRight(array, array2, array3) {
+  moveDroidsRight(array)
+  moveLAndTRight(array2)
+  moveHitsRight(array3)
+}
+
+function moveAllLeft(array, array2, array3) {
+  moveDroidsLeft(array)
+  moveLAndTLeft(array2)
+  moveHitsLeft(array3)
+}
+
 function moveAllDroids(array, array2, array3) {
   const lead = findLead(array2)
   const tail = findTail(array2)
   findLandDroids()
   if (lead < row1End) {
     // Row 1 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row1End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row2Beg && tail < row2End) {
     // Row 2 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row2Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row3End && lead > row3Beg) {
     // Row 3 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row3End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row4Beg && tail < row4End) {
     // Row 4 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row4Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row5End && lead > row5Beg) {
     // Row 5 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row5End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row6Beg && tail < row6End) {
     // Row 6 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row6Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row7End && lead > row7Beg) {
     // Row 7 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row7End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row8Beg && tail < row8End) {
     // Row 8 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row8Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row9End && lead > row9Beg) {
     // Row 9 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   }
 }
 
@@ -651,7 +635,7 @@ function orderAndDisplayScores() {
   const array = playerScores
     .sort((playerA, playerB) => playerB.score - playerA.score)
     .map(player => {
-      return `<li>${player.name}............${player.score}</li>`
+      return `<li>${player.name}............            ${player.score}</li>`
     })
   console.log(array)
   scoreList.innerHTML = array.join('')

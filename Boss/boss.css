@@ -11,21 +11,14 @@ body {
   margin: auto;
   background-color: black;
   font-family: 'Poller One', cursive;
-  background-image: url('https://i.redd.it/yykhu7vx98x41.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 #main-header {
-  height: 190px;
-  width: 800px;
+  height: 320px;
+  width: 100%;
   background-image: url('/pictures/Star\ Wars\ F.png');
-  background-color: black;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid #FFE81F;
-  align-self: center;
 }
 
 footer {
@@ -53,7 +46,6 @@ h3 {
 
 article {
   display: flex;
-  margin-top: 30px;;
 }
 
 aside {
@@ -72,13 +64,13 @@ div {
   flex-wrap: wrap;
   width: 450px;
   height: 450px;
-  background-color: black;
+  border: 1px solid lightgrey;
 }
 
 .cell {
-  border: 1px solid lightgrey;
   width: 11.11%;
   height: 11.11%;
+  border: 1px solid lightgrey;
 }
 
 .bDroid {
@@ -108,6 +100,7 @@ div {
   background-image: url('https://www.pikpng.com/pngl/m/30-300944_bleed-area-may-not-be-visible-millennium-falcon.png');
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid lightgrey;
 }
 
 .elaser {
@@ -306,3 +299,51 @@ ol {
   margin-top: 30px;
   background-color: black;
 }
+
+.darth1 {
+  background-color: black;
+  background-size: cover;
+  background-image: url('/pictures/Darth/row-1-col-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-bottom: none;
+  border-right: none;
+}
+
+.darth2 {
+  background-color: black;
+  background-size: cover;
+  background-image: url('/pictures/Darth/row-1-col-2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-bottom: none;
+  border-left: none;
+}
+
+.darth3 {
+  background-color: black;
+  background-size: cover;
+  background-image: url('/pictures/Darth/row-2-col-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-top: none;
+  border-right: none;
+  }
+
+.darth4 {
+  background-color: black;
+  background-size: cover;
+  background-image: url('/pictures/Darth/row-2-col-2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-top: none;
+  border-left: none;
+  }
