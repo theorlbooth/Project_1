@@ -85,7 +85,7 @@ function startGame() {
     moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
     moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
     moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
-  }, 1000)
+  }, 3000)
 
   interval2 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
@@ -577,6 +577,18 @@ document.addEventListener('keydown', (event) => {
 })
 
 
+// * === SumDroids ===
+
+let sum = 0
+
+function sumDroids() {
+  const array = arrayAllDroids.flat((Infinity))
+  sum = array.reduce((acc, num) => {
+    return acc + num
+  }, 0)
+}
+
+
 // * === Hit bDroids ===
 
 const arrayHitDroids = [[], [], [], [], []]
@@ -585,6 +597,7 @@ let maxScore = arrayAllDroids.flat((Infinity)).length * 100
 
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
+    sumDroids()
     if (cells[i].classList.contains('hit') === true && cells[i].classList.contains('laser') === true) {
       return
     } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
@@ -611,7 +624,7 @@ function droidHit() {
       removeLaser(i)
       laser = mFalcon
     }
-    if (score === maxScore) {
+    if (sum === 0) {
       gameWon()
       clearInterval(interval)
       clearInterval(interval2)
@@ -684,6 +697,8 @@ function mFalconHit() {
     if (cells[i].classList.contains('mFalcon') === true && cells[i].classList.contains('elaser') === true) {
       lives -= 1
       livestally.innerHTML = lives
+      score -= 250
+      scoretally.innerHTML = score
       removeELaser(i)
     }
     if (lives === 0) {
