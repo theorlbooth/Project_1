@@ -13,10 +13,8 @@ window.addEventListener("keydown", function (e) {
 
 function gameOver() {
   gameOverModal.style.display = 'block'
-}
-
-function gameOver2() {
-  gameOver2Modal.style.display = 'block'
+  const playerScore = document.querySelector('#player-score')
+  playerScore.innerHTML = score
 }
 
 function gameWon() {
@@ -52,16 +50,6 @@ span1.onclick = function () {
 }
 
 
-// --- Game Over 2 Modal ---
-
-const gameOver2Modal = document.querySelector('#gameover2-modal')
-
-const span4 = document.querySelector('#span-4')
-
-span4.onclick = function () {
-  gameOver2Modal.style.display = 'none'
-}
-
 
 // --- Win Modal ---
 
@@ -73,6 +61,22 @@ span2.onclick = function () {
   winModal.style.display = 'none'
 }
 
+
+// --- Scoreboard Modal ---
+
+const scoresModal = document.querySelector('#scores-modal')
+
+const span5 = document.querySelector('#span-5')
+
+span5.onclick = function () {
+  scoresModal.style.display = 'none'
+}
+
+const scoresButton = document.querySelector('#scoreboard')
+
+scoresButton.onclick = function () {
+  scoresModal.style.display = 'block'
+}
 
 // --- Start Button ---
 
@@ -127,11 +131,6 @@ quitButton.onclick = function () {
   window.location.reload()
 }
 
-const quitButton2 = document.querySelector('#quit2-button')
-
-quitButton2.onclick = function () {
-  window.location.reload()
-}
 
 // --- Restart Buttons ---
 
@@ -142,12 +141,6 @@ restartButton.onclick = function () {
   startGame()
 }
 
-const restartButton2 = document.querySelector('#restart2-button')
-
-restartButton2.onclick = function () {
-  document.location.reload()
-  startGame()
-}
 
 const restartButton3 = document.querySelector('#restart3-button')
 
@@ -391,7 +384,7 @@ for (let i = 0; i < width; i++) {
 function findLandDroids() {
   for (let i = 0; i < lastRow.length; i++) {
     if (cells[lastRow[i]].classList.contains('bDroid')) {
-      gameOver2()
+      gameOver()
       clearInterval(interval)
       clearInterval(interval2)
       clearInterval(interval3)
@@ -593,7 +586,7 @@ function sumDroids() {
 
 const arrayHitDroids = [[], [], [], [], []]
 
-let maxScore = arrayAllDroids.flat((Infinity)).length * 100
+const maxScore = arrayAllDroids.flat((Infinity)).length * 100
 
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
@@ -711,4 +704,41 @@ function mFalconHit() {
   }
 }
 
+
+// * === Local Storage ===
+
+let playerScores = []
+const scoreList = document.querySelector('ol')
+const submit = document.querySelector('#submit-score')
+
+
+if (localStorage) {
+  playerScores = JSON.parse(localStorage.getItem('scores'))
+  orderAndDisplayScores()
+}
+
+submit.addEventListener('click', () => {
+  document.querySelector('#submit-score').disabled = true
+  const newName = document.querySelector('input').value
+  const finalScore = Number(document.querySelector('#player-score').innerHTML)
+  const player = { name: newName, score: finalScore }
+  console.log(player)
+  playerScores.push(player)
+
+  if (localStorage) {
+    localStorage.setItem('scores', JSON.stringify(playerScores))
+  }
+  orderAndDisplayScores()
+})
+
+
+function orderAndDisplayScores() {
+  const array = playerScores
+    .sort((playerA, playerB) => playerB.score - playerA.score)
+    .map(player => {
+      return `<li>${player.name}............${player.score}</li>`
+    })
+  console.log(array)
+  scoreList.innerHTML = array.join('')
+}
 
