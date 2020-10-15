@@ -11,10 +11,13 @@ window.addEventListener('keydown', function (e) {
 
 // * === Modals ===
 
+const overlay2 = document.querySelector('#overlay2')
+
 function gameOver() {
   gameOverModal.style.display = 'block'
   const playerScore = document.querySelector('#player-score')
   playerScore.innerHTML = score
+  overlay2.style.display = 'block'
 }
 
 function gameWon() {
@@ -25,6 +28,7 @@ function gameWon() {
   winHeader.innerHTML = 'GAME WON!'
   const winP = document.querySelector('#win-p')
   winP.innerHTML = 'Victory is yours!'
+  overlay2.style.display = 'block'
 }
 
 // --- Rules Modal ---
@@ -33,14 +37,24 @@ const rulesModal = document.querySelector('#rules-modal')
 
 const span3 = document.querySelector('#span-3')
 
+const overlay = document.querySelector('#overlay')
+
+overlay.onclick = function(){
+  rulesModal.style.display = 'none'
+  scoresModal.style.display = 'none'
+  overlay.style.display = 'none'
+}
+
 span3.onclick = function () {
   rulesModal.style.display = 'none'
+  overlay.style.display = 'none'
 }
 
 const rulesButton = document.querySelector('#rules')
 
 rulesButton.onclick = function () {
   rulesModal.style.display = 'block'
+  overlay.style.display = 'block'
 }
 
 
@@ -63,12 +77,14 @@ const span5 = document.querySelector('#span-5')
 
 span5.onclick = function () {
   scoresModal.style.display = 'none'
+  overlay.style.display = 'none'
 }
 
 const scoresButton = document.querySelector('#scoreboard')
 
 scoresButton.onclick = function () {
   scoresModal.style.display = 'block'
+  overlay.style.display = 'block'
 }
 
 
