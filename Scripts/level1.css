@@ -336,3 +336,8 @@ ol {
   margin-top: 30px;
   background-color: black;
 }
+
+a {
+  width: 100px;
+  height: 100px;
+}
