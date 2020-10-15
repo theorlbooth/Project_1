@@ -46,7 +46,7 @@ body {
 #main-header {
   height: 190px;
   width: 800px;
-  background-image: url('/Star\ Wars\ F.png');
+  background-image: url('/Pictures/Star\ Wars\ F.png');
   background-color: black;
   background-repeat: no-repeat;
   background-position: center;
@@ -123,7 +123,7 @@ div {
 .laser {
   background-color: black;
   background-size: contain;
-  background-image: url('/Laser_New.png');
+  background-image: url('/Pictures/Laser_New.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -140,7 +140,7 @@ div {
 .elaser {
   background-color: black;
   background-size: contain;
-  background-image: url('/ELaser_New.png');
+  background-image: url('/Pictures/ELaser_New.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -285,7 +285,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/Start\ 2.png');
+  background-image: url('/Pictures/Start\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
@@ -298,7 +298,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/Rules\ 2.png');
+  background-image: url('/Pictures/Rules\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
@@ -326,7 +326,7 @@ ol {
 }
 
 #scoreboard {
-  background-image: url('/Scoreboard.png');
+  background-image: url('/Pictures/Scoreboard.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -335,4 +335,20 @@ ol {
   width: 200px;
   margin-top: 30px;
   background-color: black;
+}
+
+.stormtrooper {
+  background-color: black;
+  background-size: contain;
+  background-image: url('/Pictures/Stormtrooper.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hitstormtrooper {
+  background-color: black;
+  background-size: contain;
+  background-image: url('/Pictures/HitStormtrooper.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
