@@ -399,7 +399,6 @@ submit.addEventListener('click', () => {
   const newName = document.querySelector('input').value
   const finalScore = Number(document.querySelector('#player-score').innerHTML)
   const player = { name: newName, score: finalScore }
-  console.log(player)
   playerScores.push(player)
 
   if (localStorage) {

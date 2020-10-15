@@ -1,4 +1,6 @@
 
+// * === Disbale Keys in Window ===
+
 window.addEventListener("keydown", function (e) {
   // space and arrow keys
   if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -7,26 +9,162 @@ window.addEventListener("keydown", function (e) {
 }, false)
 
 
-// * -------------------------------------------
-// * ---------------- Modals -------------------
-// * -------------------------------------------
+// * === Modals ===
+
+const overlay2 = document.querySelector('#overlay2')
 
 function gameOver() {
   gameOverModal.style.display = 'block'
-}
-
-function gameOver2() {
-  gameOver2Modal.style.display = 'block'
+  const playerScore = document.querySelector('#player-score')
+  playerScore.innerHTML = score
+  overlay2.style.display = 'block'
 }
 
 function gameWon() {
   winModal.style.display = 'block'
+  overlay2.style.display = 'block'
 }
 
 
-// * -------------------------------------------
-// * ------------- Score & Lives ----------------
-// * -------------------------------------------
+// --- Rules Modal ---
+
+const rulesModal = document.querySelector('#rules-modal')
+
+const span3 = document.querySelector('#span-3')
+
+const overlay = document.querySelector('#overlay')
+
+overlay.onclick = function(){
+  rulesModal.style.display = 'none'
+  scoresModal.style.display = 'none'
+  overlay.style.display = 'none'
+}
+
+span3.onclick = function () {
+  rulesModal.style.display = 'none'
+  overlay.style.display = 'none'
+}
+
+const rulesButton = document.querySelector('#rules')
+
+rulesButton.onclick = function () {
+  rulesModal.style.display = 'block'
+  overlay.style.display = 'block'
+}
+
+
+// --- Game Over Modal ---
+
+const gameOverModal = document.querySelector('#gameover-modal')
+
+const span1 = document.querySelector('#span-1')
+
+span1.onclick = function () {
+  gameOverModal.style.display = 'none'
+}
+
+
+
+// --- Win Modal ---
+
+const winModal = document.querySelector('#win-modal')
+
+const span2 = document.querySelector('#span-2')
+
+span2.onclick = function () {
+  winModal.style.display = 'none'
+}
+
+
+// --- Scoreboard Modal ---
+
+const scoresModal = document.querySelector('#scores-modal')
+
+const span5 = document.querySelector('#span-5')
+
+span5.onclick = function () {
+  scoresModal.style.display = 'none'
+  overlay.style.display = 'none'
+}
+
+const scoresButton = document.querySelector('#scoreboard')
+
+scoresButton.onclick = function () {
+  scoresModal.style.display = 'block'
+  overlay.style.display = 'block'
+}
+
+// --- Start Button ---
+
+const startButton = document.querySelector('#start')
+
+function startGame() {
+  interval = setInterval(() => {
+    moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
+    moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
+    moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
+  }, 1000)
+
+  interval2 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('laser') === true) {
+        removeLaser(i)
+        addLaser(i - width)
+        droidHit()
+      }
+    }
+  }, 200)
+
+  interval3 = setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
+    addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
+  }, 2000)
+
+  interval4 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('elaser') === true) {
+        removeELaser(i)
+        addELaser(i + width)
+        mFalconHit()
+        return
+      }
+    }
+  }, 200)
+}
+
+startButton.onclick = function () {
+  startGame()
+}
+
+
+// --- Quit Buttons ---
+
+const quitButton = document.querySelector('#quit-button')
+
+quitButton.onclick = function () {
+  window.location.reload()
+}
+
+
+// --- Restart Buttons ---
+
+const restartButton = document.querySelector('#restart-button')
+
+restartButton.onclick = function () {
+  document.location.reload()
+  startGame()
+}
+
+
+const restartButton3 = document.querySelector('#restart3-button')
+
+restartButton3.onclick = function () {
+  document.location.reload()
+  startGame()
+}
+
+
+// * === Score & Lives ===
 
 let score = 0
 
@@ -36,9 +174,8 @@ let lives = 3
 const scoretally = document.querySelector('#score')
 const livestally = document.querySelector('#lives')
 
-// * -------------------------------------------
-// * ------------------ Grid -------------------
-// * -------------------------------------------
+
+// * === Grid ===
 
 const grid = document.querySelector('.grid')
 
@@ -53,8 +190,8 @@ for (let i = 0; i < width ** 2; i++) {
   cells.push(div)
 }
 
-// * -------------Min & Max rows--------------
 
+// * === Min & Max Rows ===
 
 const row1Beg = (width * (1 - 1))
 const row2Beg = (width * (2 - 1))
@@ -77,12 +214,9 @@ const row8End = ((width * (width - (width - 8))) - 1)
 const row9End = ((width * (width - (width - 9))) - 1)
 
 
-// * -------------------------------------------
-// * ----------------- mFalcon -----------------
-// * -------------------------------------------
+// * === mFalcon ===
 
 let mFalcon = 76
-
 
 cells[mFalcon].classList.add('mFalcon')
 
@@ -108,17 +242,14 @@ document.addEventListener('keydown', (event) => {
 })
 
 
-// * -------------------------------------------
-// * ----------------- bDroids -----------------
-// * -------------------------------------------
-
+// * === bDroids ===
 
 const arrayAllDroids = [[0, 1, 2, 3, 4, 5, 6], [11, 12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23, 24]]
 
-const arrayLeadsAndTails = [[0, 6], [11, 17], [18, 24]] 
+const arrayLeadsAndTails = [[0, 6], [11, 17], [18, 24]]
 
 
-//  * -------- Finding/Adding/Removing Lead ---------
+// * === Find/Add/Remove Lead ===
 
 function findLead(array) {
   return Math.max.apply(Math, array)
@@ -133,7 +264,7 @@ function removeLead(index) {
 }
 
 
-//  * -------- Finding/Adding/Removing Tail ---------
+// * === Find/Add/Remove Tail ===
 
 function findTail(array) {
   return Math.min.apply(Math, array)
@@ -148,7 +279,7 @@ function removeTail(index) {
 }
 
 
-//  * -------- Moving Lead & Tail ---------
+// * === Move Lead & Tail ===
 
 function moveLAndTRight(array) {
   removeLead(array[1])
@@ -181,7 +312,7 @@ function moveLAndTDown(array) {
 }
 
 
-//  * -------- Adding/Removing Droids ---------
+// * === Add/Remove bDroids ===
 
 function addDroids(array) {
   array.forEach((droid) => {
@@ -196,8 +327,6 @@ function removeDroids(array) {
   })
 }
 
-
-// ! Put function together for below:
 addDroids(arrayAllDroids[0])
 addDroids(arrayAllDroids[1])
 addDroids(arrayAllDroids[2])
@@ -210,16 +339,9 @@ addTail(arrayLeadsAndTails[1][0])
 
 addLead(arrayLeadsAndTails[2][1])
 addTail(arrayLeadsAndTails[2][0])
-// ! ==============================
 
 
-// * -------------bDroids movement--------------
-
-
-// * Right moving rows = 1, 3, 5, 7 (always odd numbers, not matter how many rows)
-// * Left moving rows = 2, 4, 6, 8 (always even numbers, not matter how many rows) 
-// * This would mean 'n' numbers of rows has to be odd (i.e width has to be odd)
-
+// * === Move bDroids ===
 
 function moveDroidsRight(array) {
   removeDroids(array)
@@ -246,7 +368,7 @@ function moveDroidsDown(array) {
 }
 
 
-// ==================================
+// * === Find Land bDroids ===
 
 const lastRow = []
 
@@ -254,22 +376,38 @@ for (let i = 0; i < width; i++) {
   lastRow[i] = (width * (width - 1)) + i
 }
 
-
 function findLandDroids() {
   for (let i = 0; i < lastRow.length; i++) {
     if (cells[lastRow[i]].classList.contains('bDroid')) {
-      gameOver2()
+      gameOver()
       clearInterval(interval)
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
     }
-  } 
+  }
 }
 
-// ==================================
 
-//  * -------- Moving All ---------
+// * === Move All ===
+
+function moveAllDown(array, array2, array3) {
+  moveDroidsDown(array)
+  moveLAndTDown(array2)
+  moveHitsDown(array3)
+}
+
+function moveAllRight(array, array2, array3) {
+  moveDroidsRight(array)
+  moveLAndTRight(array2)
+  moveHitsRight(array3)
+}
+
+function moveAllLeft(array, array2, array3) {
+  moveDroidsLeft(array)
+  moveLAndTLeft(array2)
+  moveHitsLeft(array3)
+}
 
 function moveAllDroids(array, array2, array3) {
   const lead = findLead(array2)
@@ -277,99 +415,60 @@ function moveAllDroids(array, array2, array3) {
   findLandDroids()
   if (lead < row1End) {
     // Row 1 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row1End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row2Beg && tail < row2End) {
     // Row 2 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row2Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row3End && lead > row3Beg) {
     // Row 3 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row3End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row4Beg && tail < row4End) {
     // Row 4 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row4Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row5End && lead > row5Beg) {
     // Row 5 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row5End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row6Beg && tail < row6End) {
     // Row 6 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row6Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row7End && lead > row7Beg) {
     // Row 7 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   } else if (lead === row7End) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (tail > row8Beg && tail < row8End) {
     // Row 8 (Left)
-    moveDroidsLeft(array)
-    moveLAndTLeft(array2)
-    moveHitsLeft(array3)
+    moveAllLeft(array, array2, array3)
   } else if (tail === row8Beg) {
     // Down
-    moveDroidsDown(array)
-    moveLAndTDown(array2)
-    moveHitsDown(array3)
+    moveAllDown(array, array2, array3)
   } else if (lead < row9End && lead > row9Beg) {
     // Row 9 (Right)
-    moveDroidsRight(array)
-    moveLAndTRight(array2)
-    moveHitsRight(array3)
+    moveAllRight(array, array2, array3)
   }
 }
 
 
-
-// * -------------------------------------------
-// * ------------------ Laser ------------------
-// * -------------------------------------------
-
-
+// * === Laser ===
 
 let laser
 
@@ -377,11 +476,9 @@ function addLaser(index) {
   cells[index].classList.add('laser')
 }
 
-
 function removeLaser(index) {
   cells[index].classList.remove('laser')
 }
-
 
 document.addEventListener('keydown', (event) => {
   const key = event.key
@@ -392,15 +489,28 @@ document.addEventListener('keydown', (event) => {
 })
 
 
-//  * ------------- Hit Droids --------------
+// * === SumDroids ===
 
+let sum = 0
+
+function sumDroids() {
+  const array = arrayAllDroids.flat((Infinity))
+  sum = array.reduce((acc, num) => {
+    return acc + num
+  }, 0)
+}
+
+
+
+// * === Hit bDroids ===
 
 const arrayHitDroids = [[], [], []]
 
-
+const maxScore = arrayAllDroids.flat((Infinity)).length * 100
 
 function droidHit() {
   for (let i = 0; i < cells.length; i++) {
+    sumDroids()
     if (cells[i].classList.contains('hit') === true && cells[i].classList.contains('laser') === true) {
       return
     } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
@@ -421,7 +531,7 @@ function droidHit() {
       removeLaser(i)
       laser = mFalcon
     }
-    if (score === maxScore) {
+    if (sum === 0) {
       gameWon()
       clearInterval(interval)
       clearInterval(interval2)
@@ -431,9 +541,8 @@ function droidHit() {
   }
 }
 
-let maxScore = arrayAllDroids.flat((Infinity)).length * 100
 
-//  * ------------- Add/Remove Hits --------------
+// * === Add/Remove Hits ===
 
 function addHits(array) {
   array.forEach((hit) => {
@@ -447,7 +556,8 @@ function removeHits(array) {
   })
 }
 
-//  * ------------- Hits Movement --------------
+
+// * === Move Hits ===
 
 function moveHitsRight(array) {
   removeHits(array)
@@ -474,14 +584,12 @@ function moveHitsDown(array) {
 }
 
 
-
-// =============== Multiple ELasers ===============
+// * === Multiple ELasers ===
 
 let interval
 let interval2
 let interval3
 let interval4
-
 
 function addELaser(index) {
   cells[index].classList.add('elaser')
@@ -491,13 +599,13 @@ function removeELaser(index) {
   cells[index].classList.remove('elaser')
 }
 
-
-
 function mFalconHit() {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].classList.contains('mFalcon') === true && cells[i].classList.contains('elaser') === true) {
       lives -= 1
       livestally.innerHTML = lives
+      score -= 250
+      scoretally.innerHTML = score
       removeELaser(i)
     }
     if (lives === 0) {
@@ -511,134 +619,39 @@ function mFalconHit() {
 }
 
 
-// ------- Rules Modal -------
 
-const rulesModal = document.querySelector('#rules-modal')
+// * === Local Storage ===
 
-const span3 = document.querySelector('#span-3')
+let playerScores = []
+const scoreList = document.querySelector('ol')
+const submit = document.querySelector('#submit-score')
 
-span3.onclick = function () {
-  rulesModal.style.display = 'none'
+
+if (localStorage) {
+  playerScores = JSON.parse(localStorage.getItem('scores'))
+  orderAndDisplayScores()
 }
 
+submit.addEventListener('click', () => {
+  document.querySelector('#submit-score').disabled = true
+  const newName = document.querySelector('input').value
+  const finalScore = Number(document.querySelector('#player-score').innerHTML)
+  const player = { name: newName, score: finalScore }
+  playerScores.push(player)
 
-const rulesButton = document.querySelector('#rules')
+  if (localStorage) {
+    localStorage.setItem('scores', JSON.stringify(playerScores))
+  }
+  orderAndDisplayScores()
+})
 
-rulesButton.onclick = function () {
-  rulesModal.style.display = 'block'
+
+function orderAndDisplayScores() {
+  const array = playerScores
+    .sort((playerA, playerB) => playerB.score - playerA.score)
+    .map(player => {
+      return `<li>${player.name}............            ${player.score}</li>`
+    })
+  scoreList.innerHTML = array.join('')
 }
 
-
-// ------- Game Over Modal -------
-
-const gameOverModal = document.querySelector('#gameover-modal')
-
-const span1 = document.querySelector('#span-1')
-
-span1.onclick = function () {
-  gameOverModal.style.display = 'none'
-}
-
-
-// ------- Game Over 2 Modal -------
-
-const gameOver2Modal = document.querySelector('#gameover2-modal')
-
-const span4 = document.querySelector('#span-4')
-
-span4.onclick = function () {
-  gameOver2Modal.style.display = 'none'
-}
-
-// ------- Win Modal -------
-
-const winModal = document.querySelector('#win-modal')
-
-const span2 = document.querySelector('#span-2')
-
-span2.onclick = function () {
-  winModal.style.display = 'none'
-}
-
-
-// ------- Start Button -------
-
-const startButton = document.querySelector('#start')
-
-
-function startGame() {
-  interval = setInterval(() => {
-    moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
-    moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
-    moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
-  }, 1000)
-
-
-  interval2 = setInterval(() => {
-    for (let i = 0; i < cells.length; i++) {
-      if (cells[i].classList.contains('laser') === true) {
-        removeLaser(i)
-        addLaser(i - width)
-        droidHit()
-      }
-    }
-  }, 200)
-
-
-  interval3 = setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
-    addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
-  }, 2000)
-
-
-  interval4 = setInterval(() => {
-    for (let i = 0; i < cells.length; i++) {
-      if (cells[i].classList.contains('elaser') === true) {
-        removeELaser(i)
-        addELaser(i + width)
-        mFalconHit()
-        return
-      }
-    }
-  }, 200)
-}
-
-
-startButton.onclick = function() {
-  startGame()
-}
-
-
-const quitButton = document.querySelector('#quit-button')
-
-quitButton.onclick = function () {
-  window.location.reload()
-}
-
-const quitButton2 = document.querySelector('#quit2-button')
-
-quitButton2.onclick = function () {
-  window.location.reload()
-}
-
-
-const restartButton = document.querySelector('#restart-button')
-
-restartButton.onclick = function () {
-  document.location.reload()
-  startGame()
-}
-
-const restartButton2 = document.querySelector('#restart2-button')
-
-restartButton2.onclick = function () {
-  document.location.reload()
-  startGame()
-}
-
-const restartButton3 = document.querySelector('#restart3-button')
-
-restartButton3.onclick = function () {
-  document.location.reload()
-  startGame()
-}

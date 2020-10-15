@@ -100,6 +100,8 @@ const startButton = document.querySelector('#start')
 
 function startGame() {
   interval = setInterval(() => {
+    moveAllDroids(arrayAllDroids[4], arrayLeadsAndTails[4], arrayHitDroids[4])
+    moveAllDroids(arrayAllDroids[3], arrayLeadsAndTails[3], arrayHitDroids[3])
     moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2])
     moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1])
     moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0])
@@ -118,7 +120,7 @@ function startGame() {
   interval3 = setInterval(() => {
     const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
     addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
-  }, 2000)
+  }, 1800)
 
   interval4 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
@@ -129,10 +131,10 @@ function startGame() {
         return
       }
     }
-  }, 200)
+  }, 100)
 }
 
-startButton.onclick = function () {
+startButton.onclick = function() {
   startGame()
 }
 
@@ -181,7 +183,7 @@ const grid = document.querySelector('.grid')
 
 const cells = []
 
-const width = 9
+const width = 15
 
 for (let i = 0; i < width ** 2; i++) {
   const div = document.createElement('div')
@@ -202,6 +204,13 @@ const row6Beg = (width * (6 - 1))
 const row7Beg = (width * (7 - 1))
 const row8Beg = (width * (8 - 1))
 const row9Beg = (width * (9 - 1))
+const row10Beg = (width * (10 - 1))
+const row11Beg = (width * (11 - 1))
+const row12Beg = (width * (12 - 1))
+const row13Beg = (width * (13 - 1))
+const row14Beg = (width * (14 - 1))
+const row15Beg = (width * (15 - 1))
+
 
 const row1End = ((width * (width - (width - 1))) - 1)
 const row2End = ((width * (width - (width - 2))) - 1)
@@ -212,11 +221,17 @@ const row6End = ((width * (width - (width - 6))) - 1)
 const row7End = ((width * (width - (width - 7))) - 1)
 const row8End = ((width * (width - (width - 8))) - 1)
 const row9End = ((width * (width - (width - 9))) - 1)
+const row10End = ((width * (width - (width - 10))) - 1)
+const row11End = ((width * (width - (width - 11))) - 1)
+const row12End = ((width * (width - (width - 12))) - 1)
+const row13End = ((width * (width - (width - 13))) - 1)
+const row14End = ((width * (width - (width - 14))) - 1)
+const row15End = ((width * (width - (width - 15))) - 1)
 
 
 // * === mFalcon ===
 
-let mFalcon = 76
+let mFalcon = 217
 
 cells[mFalcon].classList.add('mFalcon')
 
@@ -244,9 +259,9 @@ document.addEventListener('keydown', (event) => {
 
 // * === bDroids ===
 
-const arrayAllDroids = [[0, 1, 2, 3, 4, 5, 6], [11, 12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23, 24]]
+const arrayAllDroids = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41], [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59], [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]]
 
-const arrayLeadsAndTails = [[0, 6], [11, 17], [18, 24]]
+const arrayLeadsAndTails = [[0, 11], [18, 29], [30, 41], [48, 59], [60, 71]] 
 
 
 // * === Find/Add/Remove Lead ===
@@ -320,7 +335,6 @@ function addDroids(array) {
   })
 }
 
-
 function removeDroids(array) {
   array.forEach((droid) => {
     cells[droid].classList.remove('bDroid')
@@ -330,6 +344,8 @@ function removeDroids(array) {
 addDroids(arrayAllDroids[0])
 addDroids(arrayAllDroids[1])
 addDroids(arrayAllDroids[2])
+addDroids(arrayAllDroids[3])
+addDroids(arrayAllDroids[4])
 
 addLead(arrayLeadsAndTails[0][1])
 addTail(arrayLeadsAndTails[0][0])
@@ -340,6 +356,11 @@ addTail(arrayLeadsAndTails[1][0])
 addLead(arrayLeadsAndTails[2][1])
 addTail(arrayLeadsAndTails[2][0])
 
+addLead(arrayLeadsAndTails[3][1])
+addTail(arrayLeadsAndTails[3][0])
+
+addLead(arrayLeadsAndTails[4][1])
+addTail(arrayLeadsAndTails[4][0])
 
 // * === Move bDroids ===
 
@@ -385,7 +406,7 @@ function findLandDroids() {
       clearInterval(interval3)
       clearInterval(interval4)
     }
-  }
+  } 
 }
 
 
@@ -464,6 +485,42 @@ function moveAllDroids(array, array2, array3) {
   } else if (lead < row9End && lead > row9Beg) {
     // Row 9 (Right)
     moveAllRight(array, array2, array3)
+  } else if (lead === row9End) {
+    // Down
+    moveAllDown(array, array2, array3)
+  } else if (tail > row10Beg && tail < row10End) {
+    // Row 10 (Left)
+    moveAllLeft(array, array2, array3)
+  } else if (tail === row10Beg) {
+    // Down 
+    moveAllDown(array, array2, array3)
+  } else if (lead < row11End && lead > row11Beg) {
+    // Row 11 (Right)
+    moveAllRight(array, array2, array3)
+  } else if (lead === row11End) {
+    // Down
+    moveAllDown(array, array2, array3)
+  } else if (tail > row12Beg && tail < row12End) {
+    // Row 12 (Left)
+    moveAllLeft(array, array2, array3)
+  } else if (tail === row12Beg) {
+    // Down 
+    moveAllDown(array, array2, array3)
+  } else if (lead < row13End && lead > row13Beg) {
+    // Row 13 (Right)
+    moveAllRight(array, array2, array3)
+  } else if (lead === row13End) {
+    // Down
+    moveAllDown(array, array2, array3)
+  } else if (tail > row14Beg && tail < row14End) {
+    // Row 14 (Left)
+    moveAllLeft(array, array2, array3)
+  } else if (tail === row14Beg) {
+    // Down 
+    moveAllDown(array, array2, array3)
+  } else if (lead < row15End && lead > row15Beg) {
+    // Row 15 (Right)
+    moveAllRight(array, array2, array3) 
   }
 }
 
@@ -501,10 +558,9 @@ function sumDroids() {
 }
 
 
-
 // * === Hit bDroids ===
 
-const arrayHitDroids = [[], [], []]
+const arrayHitDroids = [[], [], [], [], []]
 
 const maxScore = arrayAllDroids.flat((Infinity)).length * 100
 
@@ -523,6 +579,12 @@ function droidHit() {
       } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
         arrayHitDroids[2].push(i)
         delete arrayAllDroids[2].splice([arrayAllDroids[2].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[3][0] && i <= arrayLeadsAndTails[3][1]) {
+        arrayHitDroids[3].push(i)
+        delete arrayAllDroids[3].splice([arrayAllDroids[3].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[4][0] && i <= arrayLeadsAndTails[4][1]) {
+        arrayHitDroids[4].push(i)
+        delete arrayAllDroids[4].splice([arrayAllDroids[4].indexOf(i)], 1)
       }
       cells[i].classList.remove('bDroid')
       cells[i].classList.add('hit')
@@ -619,7 +681,6 @@ function mFalconHit() {
 }
 
 
-
 // * === Local Storage ===
 
 let playerScores = []
@@ -637,7 +698,6 @@ submit.addEventListener('click', () => {
   const newName = document.querySelector('input').value
   const finalScore = Number(document.querySelector('#player-score').innerHTML)
   const player = { name: newName, score: finalScore }
-  console.log(player)
   playerScores.push(player)
 
   if (localStorage) {
@@ -653,7 +713,6 @@ function orderAndDisplayScores() {
     .map(player => {
       return `<li>${player.name}............            ${player.score}</li>`
     })
-  console.log(array)
   scoreList.innerHTML = array.join('')
 }
 

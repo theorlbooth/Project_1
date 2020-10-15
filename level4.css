@@ -46,7 +46,7 @@ body {
 #main-header {
   height: 190px;
   width: 800px;
-  background-image: url('/pictures/Star\ Wars\ F.png');
+  background-image: url('/Star\ Wars\ F.png');
   background-color: black;
   background-repeat: no-repeat;
   background-position: center;
@@ -96,17 +96,15 @@ div {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 450px;
-  height: 450px;
+  width: 600px;
+  height: 600px;
   background-color: black;
-  border: 1px solid lightgrey;
 }
 
 .cell {
-
-  width: 11.11%;
-  height: 11.11%;
-  
+  border: 1px solid lightgrey;
+  width: 6.66%;
+  height: 6.66%;
 }
 
 .bDroid {
@@ -117,11 +115,15 @@ div {
   background-position: center;
 }
 
+.hit {
+  background-color: black;
+  background-image: none;
+}
 
 .laser {
   background-color: black;
   background-size: contain;
-  background-image: url('/pictures/Laser.png');
+  background-image: url('/Laser.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -138,22 +140,12 @@ div {
 .elaser {
   background-color: black;
   background-size: contain;
-  background-image: url('/pictures/ELaser.png');
+  background-image: url('/ELaser.png');
   background-repeat: no-repeat;
   background-position: center;
 }
 
-#lives-2 {
-  display: flex;
-  flex-direction: column;
-
-}
-
-#lives-2 h3 {
-  margin-top: 40px;
-}
-
-#lives, #score, #darth-lives {
+#lives, #score{
   font-size: 24px;
 }
 
@@ -203,16 +195,12 @@ div {
   cursor: pointer;
 }
 
-#gameover-modal{
+#gameover-modal {
   display: none;
 }
 
 #gameover-modal-content header {
   font-size: 50px;
-}
-
-.article {
-  margin: 0px;
 }
 
 #gameover-modal article {
@@ -263,6 +251,15 @@ div {
   margin-top: 15px;
 }
 
+#win-modal-content header {
+  font-size: 50px;
+  margin-top: 80px;
+}
+
+.article {
+  margin: 0px;
+}
+
 .modal-buttons {
   display: flex;
   justify-content: space-evenly;
@@ -288,7 +285,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/pictures/Start\ 2.png');
+  background-image: url('/Start\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
@@ -301,7 +298,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/pictures/Rules\ 2.png');
+  background-image: url('/Rules\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
@@ -329,7 +326,7 @@ ol {
 }
 
 #scoreboard {
-  background-image: url('/pictures/Scoreboard.png');
+  background-image: url('/Scoreboard.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -340,56 +337,18 @@ ol {
   background-color: black;
 }
 
-.darth1 {
+.stormtrooper {
   background-color: black;
-  background-size: cover;
-  background-image: url('/pictures/Darth/darth1.jpg');
+  background-size: contain;
+  background-image: url('/Stormtrooper.png');
   background-repeat: no-repeat;
   background-position: center;
-  border-top: 1px solid lightgrey;
-  border-left: 1px solid lightgrey;
-  border-bottom: none;
-  border-right: none;
 }
 
-.darth2 {
+.hitstormtrooper {
   background-color: black;
-  background-size: cover;
-  background-image: url('/pictures/Darth/darth2.jpg');
+  background-size: contain;
+  background-image: url('/HitStormtrooper.png');
   background-repeat: no-repeat;
   background-position: center;
-  border-top: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
-  border-bottom: none;
-  border-left: none;
-}
-
-.darth3 {
-  background-color: black;
-  background-size: cover;
-  background-image: url('/pictures/Darth/darth3.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  border-bottom: 1px solid lightgrey;
-  border-left: 1px solid lightgrey;
-  border-top: none;
-  border-right: none;
-  }
-
-.darth4 {
-  background-color: black;
-  background-size: cover;
-  background-image: url('/pictures/Darth/darth4.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  border-bottom: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
-  border-top: none;
-  border-left: none;
-  }
-
-
-.hit {
-      background-color: black;
-      background-image: none;
 }

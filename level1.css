@@ -46,8 +46,8 @@ body {
 #main-header {
   height: 190px;
   width: 800px;
-  background-image: url('/pictures/Star\ Wars\ F.png');
-  background-color: black;
+  background-image: url('/Star\ Wars\ F.png');
+   background-color: black;
   background-repeat: no-repeat;
   background-position: center;
   border: 2px solid #FFE81F;
@@ -74,7 +74,7 @@ h2 {
 }
 
 h3 {
-  color: #FFE81F
+  color: #FFE81F;
 }
 
 article {
@@ -96,15 +96,15 @@ div {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   background-color: black;
 }
 
 .cell {
   border: 1px solid lightgrey;
-  width: 6.66%;
-  height: 6.66%;
+  width: 11.11%;
+  height: 11.11%;
 }
 
 .bDroid {
@@ -123,7 +123,7 @@ div {
 .laser {
   background-color: black;
   background-size: contain;
-  background-image: url('/pictures/Laser.png');
+  background-image: url('/Laser.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -140,7 +140,7 @@ div {
 .elaser {
   background-color: black;
   background-size: contain;
-  background-image: url('/pictures/ELaser.png');
+  background-image: url('/ELaser.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -212,7 +212,6 @@ div {
 
 #titles {
   display: flex;
-
 }
 
 #inputs {
@@ -286,7 +285,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/pictures/Start\ 2.png');
+  background-image: url('/Start\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
@@ -299,7 +298,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/pictures/Rules\ 2.png');
+  background-image: url('/Rules\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
@@ -327,7 +326,7 @@ ol {
 }
 
 #scoreboard {
-  background-image: url('/pictures/Scoreboard.png');
+  background-image: url('/Scoreboard.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
