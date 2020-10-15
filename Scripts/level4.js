@@ -51,7 +51,7 @@ const span3 = document.querySelector('#span-3')
 
 const overlay = document.querySelector('#overlay')
 
-overlay.onclick = function(){
+overlay.onclick = function() {
   rulesModal.style.display = 'none'
   scoresModal.style.display = 'none'
   overlay.style.display = 'none'
@@ -124,7 +124,7 @@ function startGame() {
     moveAllDroids(arrayAllDroids[2], arrayLeadsAndTails[2], arrayHitDroids[2], arrayAllTroopers[2], arrayHitTroopers[2])
     moveAllDroids(arrayAllDroids[1], arrayLeadsAndTails[1], arrayHitDroids[1], arrayAllTroopers[1], arrayHitTroopers[1])
     moveAllDroids(arrayAllDroids[0], arrayLeadsAndTails[0], arrayHitDroids[0], arrayAllTroopers[0], arrayHitTroopers[0])
-  }, 1000)
+  }, 800)
 
   interval2 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
@@ -136,10 +136,21 @@ function startGame() {
     }
   }, 200)
 
+  interval5 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('laser') === true && cells[i].classList.contains('elaser') === true) {
+        removeLaser(i)
+        removeELaser(i)
+      }
+    }
+  }, 10)
+
   interval3 = setInterval(() => {
     const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
     addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
-  }, 1800)
+    addELaser(arrayAllDroids.flat(Infinity)[randomIndex + 3])
+    addELaser(arrayAllDroids.flat(Infinity)[randomIndex + 6])
+  }, 1500)
 
   interval4 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
@@ -150,10 +161,10 @@ function startGame() {
         return
       }
     }
-  }, 100)
+  }, 30)
 }
 
-startButton.onclick = function () {
+startButton.onclick = function() {
   startGame()
 }
 
@@ -446,6 +457,7 @@ function findLandDroids() {
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
+      clearInterval(interval5)
     }
   }
 }
@@ -698,6 +710,7 @@ function droidHit() {
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
+      clearInterval(interval5)
     }
   }
 }
@@ -751,6 +764,7 @@ let interval
 let interval2
 let interval3
 let interval4
+let interval5
 
 function addELaser(index) {
   cells[index].classList.add('elaser')
@@ -775,6 +789,7 @@ function mFalconHit() {
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
+      clearInterval(interval5)
     }
   }
 }

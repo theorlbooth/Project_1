@@ -53,7 +53,7 @@ const span3 = document.querySelector('#span-3')
 
 const overlay = document.querySelector('#overlay')
 
-overlay.onclick = function () {
+overlay.onclick = function() {
   rulesModal.style.display = 'none'
   scoresModal.style.display = 'none'
   overlay.style.display = 'none'
@@ -127,6 +127,7 @@ function startGame() {
   }, 1000)
 
   interval2 = setInterval(() => {
+
     for (let i = 0; i < cells.length; i++) {
       if (cells[i].classList.contains('laser') === true) {
         removeLaser(i)
@@ -136,10 +137,21 @@ function startGame() {
     }
   }, 200)
 
+
+  interval5 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('laser') === true && cells[i].classList.contains('elaser') === true) {
+        removeLaser(i)
+        removeELaser(i)
+      }
+    }
+  }, 10)
+
+
   interval3 = setInterval(() => {
     const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
     addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
-  }, 2000)
+  }, 1000)
 
   interval4 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
@@ -150,10 +162,10 @@ function startGame() {
         return
       }
     }
-  }, 200)
+  }, 100)
 }
 
-startButton.onclick = function () {
+startButton.onclick = function() {
   startGame()
 }
 
@@ -405,6 +417,7 @@ function findLandDroids() {
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
+      clearInterval(interval5)
     }
   }
 }
@@ -558,6 +571,7 @@ function droidHit() {
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
+      clearInterval(interval5)
     }
   }
 }
@@ -611,6 +625,7 @@ let interval
 let interval2
 let interval3
 let interval4
+let interval5
 
 function addELaser(index) {
   cells[index].classList.add('elaser')
@@ -635,6 +650,7 @@ function mFalconHit() {
       clearInterval(interval2)
       clearInterval(interval3)
       clearInterval(interval4)
+      clearInterval(interval5)
     }
   }
 }
@@ -675,4 +691,8 @@ function orderAndDisplayScores() {
     })
   scoreList.innerHTML = array.join('')
 }
+
+
+
+
 
