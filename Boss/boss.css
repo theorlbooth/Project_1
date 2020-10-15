@@ -11,14 +11,21 @@ body {
   margin: auto;
   background-color: black;
   font-family: 'Poller One', cursive;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('https://i.redd.it/yykhu7vx98x41.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #main-header {
-  height: 320px;
-  width: 100%;
+  height: 190px;
+  width: 800px;
   background-image: url('/pictures/Star\ Wars\ F.png');
+  background-color: black;
   background-repeat: no-repeat;
   background-position: center;
+  border: 2px solid #FFE81F;
+  align-self: center;
 }
 
 footer {
@@ -41,11 +48,12 @@ h2 {
 }
 
 h3 {
-  color: #FFE81F
+  color: #FFE81F;
 }
 
 article {
   display: flex;
+  margin-top: 30px;
 }
 
 aside {
@@ -64,13 +72,15 @@ div {
   flex-wrap: wrap;
   width: 450px;
   height: 450px;
+  background-color: black;
   border: 1px solid lightgrey;
 }
 
 .cell {
+
   width: 11.11%;
   height: 11.11%;
-  border: 1px solid lightgrey;
+  
 }
 
 .bDroid {
@@ -81,10 +91,6 @@ div {
   background-position: center;
 }
 
-.hit {
-  background-color: black;
-  background-image: none;
-}
 
 .laser {
   background-color: black;
@@ -111,7 +117,17 @@ div {
   background-position: center;
 }
 
-#lives, #score{
+#lives-2 {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#lives-2 h3 {
+  margin-top: 40px;
+}
+
+#lives, #score, #darth-lives {
   font-size: 24px;
 }
 
@@ -300,10 +316,12 @@ ol {
   background-color: black;
 }
 
+
+
 .darth1 {
   background-color: black;
   background-size: cover;
-  background-image: url('/pictures/Darth/row-1-col-1.jpg');
+  background-image: url('/pictures/Darth/darth1.jpg');
   background-repeat: no-repeat;
   background-position: center;
   border-top: 1px solid lightgrey;
@@ -315,7 +333,7 @@ ol {
 .darth2 {
   background-color: black;
   background-size: cover;
-  background-image: url('/pictures/Darth/row-1-col-2.jpg');
+  background-image: url('/pictures/Darth/darth2.jpg');
   background-repeat: no-repeat;
   background-position: center;
   border-top: 1px solid lightgrey;
@@ -327,7 +345,7 @@ ol {
 .darth3 {
   background-color: black;
   background-size: cover;
-  background-image: url('/pictures/Darth/row-2-col-1.jpg');
+  background-image: url('/pictures/Darth/darth3.jpg');
   background-repeat: no-repeat;
   background-position: center;
   border-bottom: 1px solid lightgrey;
@@ -339,7 +357,7 @@ ol {
 .darth4 {
   background-color: black;
   background-size: cover;
-  background-image: url('/pictures/Darth/row-2-col-2.jpg');
+  background-image: url('/pictures/Darth/darth4.jpg');
   background-repeat: no-repeat;
   background-position: center;
   border-bottom: 1px solid lightgrey;
@@ -347,3 +365,9 @@ ol {
   border-top: none;
   border-left: none;
   }
+
+
+.hit {
+      background-color: black;
+      background-image: none;
+}

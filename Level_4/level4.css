@@ -11,14 +11,21 @@ body {
   margin: auto;
   background-color: black;
   font-family: 'Poller One', cursive;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('https://i.redd.it/yykhu7vx98x41.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #main-header {
-  height: 320px;
-  width: 100%;
+  height: 190px;
+  width: 800px;
   background-image: url('/pictures/Star\ Wars\ F.png');
+  background-color: black;
   background-repeat: no-repeat;
   background-position: center;
+  border: 2px solid #FFE81F;
+  align-self: center;
 }
 
 footer {
@@ -46,6 +53,7 @@ h3 {
 
 article {
   display: flex;
+  margin-top: 30px;
 }
 
 aside {
@@ -64,6 +72,7 @@ div {
   flex-wrap: wrap;
   width: 600px;
   height: 600px;
+  background-color: black;
 }
 
 .cell {
@@ -99,6 +108,7 @@ div {
   background-image: url('https://www.pikpng.com/pngl/m/30-300944_bleed-area-may-not-be-visible-millennium-falcon.png');
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid lightgrey;
 }
 
 .elaser {

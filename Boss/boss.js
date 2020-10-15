@@ -1,7 +1,7 @@
 
 // * === Disbale Keys in Window ===
 
-window.addEventListener("keydown", function (e) {
+window.addEventListener('keydown', function (e) {
   // space and arrow keys
   if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
     e.preventDefault();
@@ -86,22 +86,23 @@ const startButton = document.querySelector('#start')
 function startGame() {
   interval = setInterval(() => {
     moveDarth()
-  }, 1000)
+    moveHitDarth()
+  }, 1500)
 
   interval2 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
       if (cells[i].classList.contains('laser') === true) {
         removeLaser(i)
         addLaser(i - width)
+        darthHit()
       }
     }
   }, 200)
 
   interval3 = setInterval(() => {
-    let randomIndex = Math.floor(Math.random() * (arrayDarth.length))
-    addELaser(arrayDarth[randomIndex])
-    randomIndex = Math.floor(Math.random() * (arrayDarth.length))
-    addELaser(arrayDarth[randomIndex])
+    for (let i = 0; i < 4; i++) {
+      addELaser(arrayDarth[i])
+    }
   }, 1000)
 
   interval4 = setInterval(() => {
@@ -113,7 +114,7 @@ function startGame() {
         return
       }
     }
-  }, 80)
+  }, 50)
 }
 
 startButton.onclick = function () {
@@ -157,6 +158,7 @@ let lives = 3
 
 const scoretally = document.querySelector('#score')
 const livestally = document.querySelector('#lives')
+const darthlivestally = document.querySelector('#darth-lives')
 
 
 //### * === Grid ===
@@ -232,10 +234,10 @@ const possibleCells = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18
 
 let darthPosition = 22
 
-const arrayDarth = [darthPosition, darthPosition + 1, darthPosition + width, darthPosition + width + 1]
+let arrayDarth = [darthPosition, darthPosition + 1, darthPosition + width, darthPosition + width + 1]
+
 
 addDarth()
-
 
 
 //### * === Add/Remove Darth ===
@@ -245,6 +247,7 @@ function addDarth() {
   cells[darthPosition + 1].classList.add('darth2')
   cells[darthPosition + width].classList.add('darth3')
   cells[darthPosition + width + 1].classList.add('darth4')
+  arrayDarth = [darthPosition, darthPosition + 1, darthPosition + width, darthPosition + width + 1]
 }
 
 function removeDarth() {
@@ -253,6 +256,7 @@ function removeDarth() {
   cells[darthPosition + 1].classList.remove('darth2')
   cells[darthPosition].classList.remove('darth1')
 }
+
 
 
 // * === Move Darth ===
@@ -288,46 +292,49 @@ document.addEventListener('keydown', (event) => {
 
 // * === SumDroids ===
 
-let sum = 0
-
-function sumDroids() {
-  const array = arrayAllDroids.flat((Infinity))
-  sum = array.reduce((acc, num) => {
-    return acc + num
-  }, 0)
-}
+let darthLives = 6
 
 
 
 //### * === Hit bDroids ===
 
-const arrayHitDarth = [[], [], [], []]
 
-
-function droidHit() {
+function darthHit() {
   for (let i = 0; i < cells.length; i++) {
-    sumDroids()
+
     if (cells[i].classList.contains('hit') === true && cells[i].classList.contains('laser') === true) {
       return
-    } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
-      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
-        arrayHitDroids[0].push(i)
-        delete arrayAllDroids[0].splice([arrayAllDroids[0].indexOf(i)], 1)
-      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
-        arrayHitDroids[1].push(i)
-        delete arrayAllDroids[1].splice([arrayAllDroids[1].indexOf(i)], 1)
-      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
-        arrayHitDroids[2].push(i)
-        delete arrayAllDroids[2].splice([arrayAllDroids[2].indexOf(i)], 1)
-      }
-      cells[i].classList.remove('bDroid')
-      cells[i].classList.add('hit')
-      score += 100
+    } else if (cells[i].classList.contains('darth1') === true && cells[i].classList.contains('laser') === true) {
+      score += 250
       scoretally.innerHTML = score
       removeLaser(i)
       laser = mFalcon
+      darthLives -= 1
+      darthlivestally.innerHTML = darthLives
+    } else if (cells[i].classList.contains('darth2') === true && cells[i].classList.contains('laser') === true) {
+      score += 250
+      scoretally.innerHTML = score
+      removeLaser(i)
+      laser = mFalcon
+      darthLives -= 1
+      darthlivestally.innerHTML = darthLives
+    } else if (cells[i].classList.contains('darth3') === true && cells[i].classList.contains('laser') === true) {
+      score += 250
+      scoretally.innerHTML = score
+      removeLaser(i)
+      laser = mFalcon
+      darthLives -= 1
+      darthlivestally.innerHTML = darthLives
+    } else if (cells[i].classList.contains('darth4') === true && cells[i].classList.contains('laser') === true) {
+      score += 250
+      scoretally.innerHTML = score
+      removeLaser(i)
+      laser = mFalcon
+      darthLives -= 1
+      darthlivestally.innerHTML = darthLives
     }
-    if (sum === 0) {
+    
+    if (darthLives === 0) {
       gameWon()
       clearInterval(interval)
       clearInterval(interval2)
@@ -337,47 +344,6 @@ function droidHit() {
   }
 }
 
-
-// * === Add/Remove Hits ===
-
-function addHits(array) {
-  array.forEach((hit) => {
-    cells[hit].classList.add('hit')
-  })
-}
-
-function removeHits(array) {
-  array.forEach((hit) => {
-    cells[hit].classList.remove('hit')
-  })
-}
-
-
-// * === Move Hits ===
-
-function moveHitsRight(array) {
-  removeHits(array)
-  for (let i = 0; i < array.length; i++) {
-    array[i] += 1
-  }
-  addHits(array)
-}
-
-function moveHitsLeft(array) {
-  removeHits(array)
-  for (let i = 0; i < array.length; i++) {
-    array[i] -= 1
-  }
-  addHits(array)
-}
-
-function moveHitsDown(array) {
-  removeHits(array)
-  for (let i = 0; i < array.length; i++) {
-    array[i] += width
-  }
-  addHits(array)
-}
 
 
 // * === Multiple ELasers ===
