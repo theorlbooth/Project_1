@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Level 4</title>
+  <title>Boss Level</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../Scripts/level4.css">
+  <link rel="stylesheet" href="Scripts/boss.css">
   <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
 </head>
 
@@ -23,11 +23,13 @@
         <div id="score">0</div>
       </aside>
       <section>
-        <h2>LEVEL 4</h2>
+        <h2>FINAL LEVEL</h2>
         <div class="grid">
         </div>
       </section>
-      <aside>
+      <aside id="lives-2">
+        <h3>DARTH LIVES:</h3>
+        <div id="darth-lives">8</div>
         <h3>LIVES:</h3>
         <div id="lives">3</div>
       </aside>
@@ -35,8 +37,8 @@
       <div id="gameover-modal" class="modal">
         <div id="gameover-modal-content" class="modal-content">
           <span id="span-1" class="close">&times;</span>
-          <header>GAME OVER</header>
-          <p>You have been destroyed!</p>
+          <header id="win-header">GAME OVER</header>
+          <p id="win-p">You have been destroyed!</p>
           <article class="article">
             <div id="titles">
               <h4 id="final-score">Final Score: </h4>
@@ -51,21 +53,6 @@
           <section class="modal-buttons">
             <button id="restart-button" class="m-button">RESTART</button>
             <button id="quit-button" class="m-button">QUIT</button>
-          </section>
-        </div>
-      </div>
-
-      <div id="win-modal" class="modal">
-        <div id="win-modal-content" class="modal-content">
-          <span id="span-2" class="close">&times;</span>
-          <header>LEVEL COMPLETE</header>
-          <p>LEVEL 4</p>
-
-          <section class="modal-buttons">
-            <button id="restart3-button" class="m-button">RESTART</button>
-            <button id="next-level-button" class="m-button">NEXT LEVEL
-              <a href="../Scripts/index5.html"></a>
-            </button>
           </section>
         </div>
       </div>
@@ -108,7 +95,7 @@
     <button id="scoreboard"></button>
   </footer>
 
-  <script src="../Scripts/level4.js"></script>
+  <script src="Scripts/boss.js"></script>
 
 </body>
 

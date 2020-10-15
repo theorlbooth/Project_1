@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Boss Level</title>
+  <title>Level 3</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../Scripts/boss.css">
+  <link rel="stylesheet" href="Scripts/level3.css">
   <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
 </head>
 
@@ -23,13 +23,11 @@
         <div id="score">0</div>
       </aside>
       <section>
-        <h2>FINAL LEVEL</h2>
+        <h2>LEVEL 3</h2>
         <div class="grid">
         </div>
       </section>
-      <aside id="lives-2">
-        <h3>DARTH LIVES:</h3>
-        <div id="darth-lives">8</div>
+      <aside>
         <h3>LIVES:</h3>
         <div id="lives">3</div>
       </aside>
@@ -37,8 +35,8 @@
       <div id="gameover-modal" class="modal">
         <div id="gameover-modal-content" class="modal-content">
           <span id="span-1" class="close">&times;</span>
-          <header id="win-header">GAME OVER</header>
-          <p id="win-p">You have been destroyed!</p>
+          <header>GAME OVER</header>
+          <p>You have been destroyed!</p>
           <article class="article">
             <div id="titles">
               <h4 id="final-score">Final Score: </h4>
@@ -53,6 +51,19 @@
           <section class="modal-buttons">
             <button id="restart-button" class="m-button">RESTART</button>
             <button id="quit-button" class="m-button">QUIT</button>
+          </section>
+        </div>
+      </div>
+
+      <div id="win-modal" class="modal">
+        <div id="win-modal-content" class="modal-content">
+          <span id="span-2" class="close">&times;</span>
+          <header>LEVEL COMPLETE</header>
+          <p>LEVEL 3</p>
+
+          <section class="modal-buttons">
+            <button id="restart3-button" class="m-button">RESTART</button>
+              <a href="index4.html"><button id="next-level-button" class="m-button">NEXT LEVEL</button></a>
           </section>
         </div>
       </div>
@@ -95,7 +106,7 @@
     <button id="scoreboard"></button>
   </footer>
 
-  <script src="../Scripts/boss.js"></script>
+  <script src="Scripts/level3.js"></script>
 
 </body>
 
