@@ -25,6 +25,23 @@ function gameWon() {
   overlay2.style.display = 'block'
 }
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+let playerScoresSF2 = []
+
+const nextLevel = document.querySelector('#next-level-button')
+
+nextLevel.addEventListener('click', () => {
+  const livesSF = Number(document.querySelector('#lives').innerHTML)
+  const scoreSF = Number(document.querySelector('#score').innerHTML)
+  const playerSF = { lives: livesSF, score: scoreSF }
+  playerScoresSF2.push(playerSF)
+
+  if (localStorage) {
+    localStorage.setItem('scoresSF', JSON.stringify(playerScoresSF2))
+  }
+})
+
 
 // --- Rules Modal ---
 
@@ -169,15 +186,26 @@ restartButton3.onclick = function () {
 
 
 // * === Score & Lives ===
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-let score = 0
+let playerScoresSF
 
-let lives = 3
+if (localStorage.getItem('scoresSF') !== null) {
+  playerScoresSF = JSON.parse(localStorage.getItem('scoresSF'))
+}
+
+
+let score = playerScoresSF[playerScoresSF.length - 1].score
+
+let lives = (playerScoresSF[playerScoresSF.length - 1].lives) + 1
+
 
 
 const scoretally = document.querySelector('#score')
 const livestally = document.querySelector('#lives')
 
+scoretally.innerHTML = score
+livestally.innerHTML = lives
 
 //* === Grid ===
 

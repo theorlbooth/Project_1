@@ -20,10 +20,29 @@ function gameOver() {
   overlay2.style.display = 'block'
 }
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
 function gameWon() {
   winModal.style.display = 'block'
   overlay2.style.display = 'block'
 }
+
+let playerScoresSF = []
+
+const nextLevel = document.querySelector('#next-level-button')
+
+nextLevel.addEventListener('click', () => {
+  const livesSF = Number(document.querySelector('#lives').innerHTML)
+  const scoreSF = Number(document.querySelector('#score').innerHTML)
+  const playerSF = { lives: livesSF, score: scoreSF }
+  playerScoresSF.push(playerSF)
+
+  if (localStorage) {
+    localStorage.setItem('scoresSF', JSON.stringify(playerScoresSF))
+  }
+})
 
 
 // --- Rules Modal ---
@@ -34,7 +53,7 @@ const span3 = document.querySelector('#span-3')
 
 const overlay = document.querySelector('#overlay')
 
-overlay.onclick = function(){
+overlay.onclick = function () {
   rulesModal.style.display = 'none'
   scoresModal.style.display = 'none'
   overlay.style.display = 'none'

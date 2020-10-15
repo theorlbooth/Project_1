@@ -151,16 +151,28 @@ restartButton.onclick = function () {
 
 
 // * === Score & Lives ===
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-let score = 0
+let playerScoresSF
 
-let lives = 3
+if (localStorage.getItem('scoresSF') !== null) {
+  playerScoresSF = JSON.parse(localStorage.getItem('scoresSF'))
+}
+
+
+let score = playerScoresSF[playerScoresSF.length - 1].score
+
+let lives = (playerScoresSF[playerScoresSF.length - 1].lives) + 1
+
+
 
 
 const scoretally = document.querySelector('#score')
 const livestally = document.querySelector('#lives')
 const darthlivestally = document.querySelector('#darth-lives')
 
+scoretally.innerHTML = score
+livestally.innerHTML = lives
 
 //### * === Grid ===
 
