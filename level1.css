@@ -123,7 +123,7 @@ div {
 .laser {
   background-color: black;
   background-size: contain;
-  background-image: url('/Laser.png');
+  background-image: url('/Laser_New.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -140,7 +140,7 @@ div {
 .elaser {
   background-color: black;
   background-size: contain;
-  background-image: url('/ELaser.png');
+  background-image: url('/ELaser_New.png');
   background-repeat: no-repeat;
   background-position: center;
 }
