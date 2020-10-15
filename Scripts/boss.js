@@ -390,7 +390,7 @@ const scoreList = document.querySelector('ol')
 const submit = document.querySelector('#submit-score')
 
 
-if (localStorage) {
+if (localStorage.getItem('scores') !== null) {
   playerScores = JSON.parse(localStorage.getItem('scores'))
   orderAndDisplayScores()
 }
