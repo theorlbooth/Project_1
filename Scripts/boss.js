@@ -66,6 +66,7 @@ const span1 = document.querySelector('#span-1')
 
 span1.onclick = function () {
   gameOverModal.style.display = 'none'
+  overlay2.style.display = 'none'
 }
 
 
