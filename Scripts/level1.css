@@ -285,7 +285,7 @@ div {
   height: 50px;
   width: 100px;
   background-size: 80%;
-  background-image: url('/Pictures/Start\ 2.png');
+  background-image: url('../Pictures/Start\ 2.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 20px;
