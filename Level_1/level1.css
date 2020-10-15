@@ -231,6 +231,10 @@ div {
   margin-top: 80px;
 }
 
+.article {
+  margin: 0px;
+}
+
 .modal-buttons {
   display: flex;
   justify-content: space-evenly;

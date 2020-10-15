@@ -177,12 +177,16 @@ div {
   cursor: pointer;
 }
 
-#gameover-modal {
+#gameover-modal{
   display: none;
 }
 
 #gameover-modal-content header {
   font-size: 50px;
+}
+
+.article {
+  margin: 0px;
 }
 
 #gameover-modal article {
@@ -194,7 +198,6 @@ div {
 
 #titles {
   display: flex;
-
 }
 
 #inputs {
@@ -232,11 +235,6 @@ div {
   border: 2px solid #FFE81F;
   padding: 5px;
   margin-top: 15px;
-}
-
-#win-modal-content header {
-  font-size: 50px;
-  margin-top: 80px;
 }
 
 .modal-buttons {
@@ -315,8 +313,6 @@ ol {
   margin-top: 30px;
   background-color: black;
 }
-
-
 
 .darth1 {
   background-color: black;

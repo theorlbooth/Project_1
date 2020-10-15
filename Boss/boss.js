@@ -18,9 +18,14 @@ function gameOver() {
 }
 
 function gameWon() {
-  winModal.style.display = 'block'
+  gameOverModal.style.display = 'block'
+  const playerScore = document.querySelector('#player-score')
+  playerScore.innerHTML = score
+  const winHeader = document.querySelector('#win-header')
+  winHeader.innerHTML = 'GAME WON!'
+  const winP = document.querySelector('#win-p')
+  winP.innerHTML = 'Victory is yours!'
 }
-
 
 // --- Rules Modal ---
 
@@ -50,18 +55,6 @@ span1.onclick = function () {
 }
 
 
-
-// --- Win Modal ---
-
-const winModal = document.querySelector('#win-modal')
-
-const span2 = document.querySelector('#span-2')
-
-span2.onclick = function () {
-  winModal.style.display = 'none'
-}
-
-
 // --- Scoreboard Modal ---
 
 const scoresModal = document.querySelector('#scores-modal')
@@ -86,7 +79,6 @@ const startButton = document.querySelector('#start')
 function startGame() {
   interval = setInterval(() => {
     moveDarth()
-    moveHitDarth()
   }, 1500)
 
   interval2 = setInterval(() => {
@@ -136,14 +128,6 @@ quitButton.onclick = function () {
 const restartButton = document.querySelector('#restart-button')
 
 restartButton.onclick = function () {
-  document.location.reload()
-  startGame()
-}
-
-
-const restartButton3 = document.querySelector('#restart3-button')
-
-restartButton3.onclick = function () {
   document.location.reload()
   startGame()
 }
@@ -292,7 +276,7 @@ document.addEventListener('keydown', (event) => {
 
 // * === SumDroids ===
 
-let darthLives = 6
+let darthLives = 8
 
 
 
@@ -417,3 +401,4 @@ function orderAndDisplayScores() {
     })
   scoreList.innerHTML = array.join('')
 }
+
