@@ -127,7 +127,6 @@ function startGame() {
   }, 1000)
 
   interval2 = setInterval(() => {
-
     for (let i = 0; i < cells.length; i++) {
       if (cells[i].classList.contains('laser') === true) {
         removeLaser(i)
@@ -143,6 +142,7 @@ function startGame() {
       if (cells[i].classList.contains('laser') === true && cells[i].classList.contains('elaser') === true) {
         removeLaser(i)
         removeELaser(i)
+        
       }
     }
   }, 10)
@@ -152,6 +152,7 @@ function startGame() {
     const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
     addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
   }, 1000)
+
 
   interval4 = setInterval(() => {
     for (let i = 0; i < cells.length; i++) {
