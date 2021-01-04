@@ -1,6 +1,6 @@
 ## ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) General Assembly, Software Engineering Immersive
 
-#Project #1: Star Invaders
+# Project #1: Star Invaders
 
 
 ## Overview
@@ -48,7 +48,6 @@ I used a few different techonoligies in order to plan and wireframe my project -
 
 ![wireframe](Screenshots/WF_1.png)
 ![wireframe_2](Screenshots/WF_2.png)
-![wireframe_3](Screenshots/WF_GoogleDoc.png)
 ![wireframe_4](Screenshots/WF_Row_Calc.png)
 
 
@@ -134,7 +133,7 @@ The enemy lasers were exactly the same concept as the lasers, with 2 fundadmenta
 
 ### Scaling
 
-The main issue with scaling was finding the begging and end of each row without having to hard code them. The formula (see above in spreadsheet) was easy enough to find - this allowed me to enter the number of columns required and get the begging and end of each row, however I couldnt find a way to replicate the formula n times - so I ended up having to hard code that part:
+The main issue with scaling was finding the begging and end of each row without having to hard code them. The formula (see below in spreadsheet) was easy enough to find - this allowed me to enter the number of columns required and get the begging and end of each row, however I couldnt find a way to replicate the formula n times - so I ended up having to hard code that part:
 
 ```
 const row1Beg = (width * (1 - 1))
@@ -157,6 +156,9 @@ const row7End = ((width * (width - (width - 7))) - 1)
 const row8End = ((width * (width - (width - 8))) - 1)
 const row9End = ((width * (width - (width - 9))) - 1)
 ```
+
+![wireframe_3](Screenshots/WF_GoogleDoc.png)
+
 
 ### Collisions
 
