@@ -9,6 +9,7 @@ window.addEventListener('keydown', function (e) {
 }, false)
 
 
+
 // * === Modals ===
 
 const overlay2 = document.querySelector('#overlay2')
@@ -262,7 +263,7 @@ let arrayDarth = [darthPosition, darthPosition + 1, darthPosition + width, darth
 addDarth()
 
 
-//### * === Add/Remove Darth ===
+// * === Add/Remove Darth ===
 
 function addDarth() {
   cells[darthPosition].classList.add('darth1')
