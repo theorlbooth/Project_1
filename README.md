@@ -99,93 +99,90 @@ document.addEventListener('keydown', (event) => {
 ```
 
 ### Enemy movement
+
+This was probably one of the more time consuming tasks as I wanted the enemies to move in opposite directions depending on the rows they were on. In order to get this to work I came up with a system whereby there is a lead square and a tail square and as these move the enemies then follow them. At the end of each line the lead becomes the tail on the next line and vise versa. I then applied some logic to check if either the lead square or the tail square was equal to the start or the end of the line in question and then applied the required functions. 
+
+
 ### Lasers
+
+In order to be able to have multiple lasers I put an event listener linked to the space bar in that adds a laser to the cell directly above the Millenium Falcon wherever it is on the board. I then wrote an interval function to check every 200ms if there are any lasers on the board and to move them accordingly.
+
+
 ### Enemy Lasers
-### Scalling
+
+The enemy lasers were exactly the same concept as the lasers, with 2 fundadmental differences. First of all they obviously needed to move down the grid and not up it; and secondly, they needed to be fired randomly. I also wanted these to move at different speeds depending on which level the user was playing. 
+
+```
+  interval3 = setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * (arrayAllDroids.flat(Infinity).length))
+    addELaser(arrayAllDroids.flat(Infinity)[randomIndex])
+  }, 1000)
+
+
+  interval4 = setInterval(() => {
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].classList.contains('elaser') === true) {
+        removeELaser(i)
+        addELaser(i + width)
+        mFalconHit()
+        return
+      }
+    }
+  }, 100)
+```
+
+
+### Scaling
+
+The main issue with scaling was finding the begging and end of each row without having to hard code them. The formula (see above in spreadsheet) was easy enough to find - this allowed me to enter the number of columns required and get the begging and end of each row, however I couldnt find a way to replicate the formula n times - so I ended up having to hard code that part:
+
+```
+const row1Beg = (width * (1 - 1))
+const row2Beg = (width * (2 - 1))
+const row3Beg = (width * (3 - 1))
+const row4Beg = (width * (4 - 1))
+const row5Beg = (width * (5 - 1))
+const row6Beg = (width * (6 - 1))
+const row7Beg = (width * (7 - 1))
+const row8Beg = (width * (8 - 1))
+const row9Beg = (width * (9 - 1))
+
+const row1End = ((width * (width - (width - 1))) - 1)
+const row2End = ((width * (width - (width - 2))) - 1)
+const row3End = ((width * (width - (width - 3))) - 1)
+const row4End = ((width * (width - (width - 4))) - 1)
+const row5End = ((width * (width - (width - 5))) - 1)
+const row6End = ((width * (width - (width - 6))) - 1)
+const row7End = ((width * (width - (width - 7))) - 1)
+const row8End = ((width * (width - (width - 8))) - 1)
+const row9End = ((width * (width - (width - 9))) - 1)
+```
+
 ### Collisions
-### Boss
-  
+
+
   
 ## Screenshots
 ![screnshot](Screenshots/GP_Home.png)
 ![screnshot_2](Screenshots/GP_Level_2.png)
-![screnshot_3](Screenshots/GP_.png)
-![screnshot_4](Screenshots/GP_.png)
-![screnshot_5](Screenshots/GP_.png)
-![screnshot_6](Screenshots/GP_.png)
-![screnshot_7](Screenshots/GP_.png)
-![screnshot_8](Screenshots/GP_.png)
+![screnshot_3](Screenshots/GP_Level_3.png)
+![screnshot_4](Screenshots/GP_Level_4.1.png)
+![screnshot_5](Screenshots/GP_Level_4.2.png)
+![screnshot_6](Screenshots/GP_Boss.png)
+![screnshot_7](Screenshots/GP_Rules.png)
+![screnshot_8](Screenshots/GP_Leaderboard.png)
 
 ## Challenges / Victories
 
 ### Local sotrage for scores carried to different levels
+
+
+### Harder / decaying enemies
+
+This was a feature that I really liked the idea of an probably spent too much time implementing. In order to get the 'clones' to decay I once hit for the first time, I created 2 classes for this type of enemy, one for pre-hit and the other for post-hit. And after a bit of **Paintbrush** on the original image, I had a new image to replace the old once the new class came into place. 
+
+
 ### Getting boss too move together 
-### Harder enemies
-### Lasers
-
-```
-// * === Find/Add/Remove Lead ===
-
-function findLead(array) {
-  return Math.max.apply(Math, array)
-}
-
-function addLead(index) {
-  cells[index].classList.add('lead')
-}
-
-function removeLead(index) {
-  cells[index].classList.remove('lead')
-}
-
-
-// * === Find/Add/Remove Tail ===
-
-function findTail(array) {
-  return Math.min.apply(Math, array)
-}
-
-function addTail(index) {
-  cells[index].classList.add('tail')
-}
-
-function removeTail(index) {
-  cells[index].classList.remove('tail')
-}
-
-
-// * === Move Lead & Tail ===
-
-function moveLAndTRight(array) {
-  removeLead(array[1])
-  removeTail(array[0])
-  for (let i = 0; i < array.length; i++) {
-    array[i] += 1
-  }
-  addLead(array[1])
-  addTail(array[0])
-}
-
-function moveLAndTLeft(array) {
-  removeLead(array[1])
-  removeTail(array[0])
-  for (let i = 0; i < array.length; i++) {
-    array[i] -= 1
-  }
-  addLead(array[1])
-  addTail(array[0])
-}
-
-function moveLAndTDown(array) {
-  removeLead(array[1])
-  removeTail(array[0])
-  for (let i = 0; i < array.length; i++) {
-    array[i] += width
-  }
-  addLead(array[1])
-  addTail(array[0])
-}
-```
 
 Moving Darth Vadar randomly but keeping the 4 together and not allowing any of the 'squares' to go over the edge of the grid.
 
@@ -208,7 +205,6 @@ function removeDarth() {
 }
 
 
-
 // * === Move Darth ===
 
 function moveDarth() {
@@ -220,7 +216,10 @@ function moveDarth() {
 
 ## Known bugs
 
-I have found on occasion that when too many lasers are fired from the M-Flacon that some of them pass through the 'enemies' - this doesnt seem to happen on every level and usually happens when there are fewer 'enemies' left on the grid.
+* I have found on occasion that when too many lasers are fired from the M-Flacon that some of them pass through the 'enemies' - this doesnt seem to happen on every level and usually happens when there are fewer 'enemies' left on the grid.
+
+* Although not one I have managed to replicate - a friend advised me that he managed to get the 'Darth Lives' on the final level to as low as '-66'. There was obviously something very wrong there, but as I say I have not managed to recreate this issue.
+
 
 ## Potential future features
 
