@@ -24,9 +24,9 @@ You can find the project here.
 
 ### Requirements
 
-* Use a mix of HTML/CSS & Javascript to render a game in the browser
-* Use logic and DOM manipulation to control the game flow
-* Use semantic markup for HTML and CSS
+* Use a mix of **HTML/CSS** & **Javascript** to render a game in the browser
+* Use logic and **DOM manipulation** to control the game flow
+* Use semantic markup for **HTML** and **CSS**
 * Deploy the game online
 * The player should be able to clear at least one wave of aliens 
 * The player's score should be displayed at the end of the game
@@ -40,7 +40,7 @@ You can find the project here.
 
 ## Approach
 
-The two main off-spec features I wanted to incoorporate were to have the 'aliens' moving in opposite directions and not just moving as a block, and to have a multilevel game, potentially with a boss at the end. 
+The two main off-spec features I wanted to incoorporate were to have the 'aliens' moving in opposite directions and not just moving as a block, and to have a multilevel game, potentially with a boss at the end. I decided to leave the grid in place rather than to hide it in order to give the game a bit more of a retro feel to it, removing it only for the last level so as to give the 'boss' more definition.
 
 ### Wireframes
 
@@ -48,7 +48,7 @@ I used a few different techonoligies in order to plan and wireframe my project -
 
 ![wireframe](Screenshots/WF_1.png)
 ![wireframe_2](Screenshots/WF_2.png)
-![wireframe_4](Screenshots/WF_Row_Calc.png)
+![wireframe_3](Screenshots/WF_GoogleDoc.png)
 
 
 ### Grid
@@ -157,12 +157,104 @@ const row8End = ((width * (width - (width - 8))) - 1)
 const row9End = ((width * (width - (width - 9))) - 1)
 ```
 
-![wireframe_3](Screenshots/WF_GoogleDoc.png)
+![wireframe_4](Screenshots/WF_Row_Calc.png)
 
 
 ### Collisions
 
+In order to check for collisions I wrote the following code to check (with intervals) whether at any one time the class of the element contained both a laser and any of the 'enemy' classes. If so then to remove both the laser and either change the class (if the enemy required multiple hits) or to remove the class in order to leave the cell blank.
 
+```
+function droidHit() {
+  for (let i = 0; i < cells.length; i++) {
+    sumDroids()
+    if (cells[i].classList.contains('hit') === true && cells[i].classList.contains('laser') === true) {
+      return
+    } else if (cells[i].classList.contains('stormtrooper') === true && cells[i].classList.contains('laser') === true) {
+      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+        arrayHitTroopers[0].push(i)
+        delete arrayAllTroopers[0].splice([arrayAllTroopers[0].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+        arrayHitTroopers[1].push(i)
+        delete arrayAllTroopers[1].splice([arrayAllTroopers[1].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+        arrayHitTroopers[2].push(i)
+        delete arrayAllTroopers[2].splice([arrayAllTroopers[2].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[3][0] && i <= arrayLeadsAndTails[3][1]) {
+        arrayHitTroopers[3].push(i)
+        delete arrayAllTroopers[3].splice([arrayAllTroopers[3].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[4][0] && i <= arrayLeadsAndTails[4][1]) {
+        arrayHitTroopers[4].push(i)
+        delete arrayAllTroopers[4].splice([arrayAllTroopers[4].indexOf(i)], 1)
+      }
+      cells[i].classList.remove('stormtrooper')
+      cells[i].classList.add('hitstormtrooper')
+      removeLaser(i)
+      laser = mFalcon
+    } else if (cells[i].classList.contains('hitstormtrooper') === true && cells[i].classList.contains('laser') === true) {
+      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+        arrayHitDroids[0].push(i)
+        delete arrayHitTroopers[0].splice([arrayHitTroopers[0].indexOf(i)], 1)
+        delete arrayAllDroids[0].splice([arrayAllDroids[0].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+        arrayHitDroids[1].push(i)
+        delete arrayHitTroopers[1].splice([arrayHitTroopers[1].indexOf(i)], 1)
+        delete arrayAllDroids[1].splice([arrayAllDroids[1].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+        arrayHitDroids[2].push(i)
+        delete arrayHitTroopers[2].splice([arrayHitTroopers[2].indexOf(i)], 1)
+        delete arrayAllDroids[2].splice([arrayAllDroids[2].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[3][0] && i <= arrayLeadsAndTails[3][1]) {
+        arrayHitDroids[3].push(i)
+        delete arrayHitTroopers[3].splice([arrayHitTroopers[3].indexOf(i)], 1)
+        delete arrayAllDroids[3].splice([arrayAllDroids[3].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[4][0] && i <= arrayLeadsAndTails[4][1]) {
+        arrayHitDroids[4].push(i)
+        delete arrayHitTroopers[4].splice([arrayHitTroopers[4].indexOf(i)], 1)
+        delete arrayAllDroids[4].splice([arrayAllDroids[4].indexOf(i)], 1)
+      }
+      cells[i].classList.remove('hitstormtrooper')
+      cells[i].classList.remove('bDroid')
+      cells[i].classList.add('hit')
+      score += 200
+      scoretally.innerHTML = score
+      removeLaser(i)
+      laser = mFalcon
+    } else if (cells[i].classList.contains('bDroid') === true && cells[i].classList.contains('laser') === true) {
+      if (i >= arrayLeadsAndTails[0][0] && i <= arrayLeadsAndTails[0][1]) {
+        arrayHitDroids[0].push(i)
+        delete arrayAllDroids[0].splice([arrayAllDroids[0].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[1][0] && i <= arrayLeadsAndTails[1][1]) {
+        arrayHitDroids[1].push(i)
+        delete arrayAllDroids[1].splice([arrayAllDroids[1].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[2][0] && i <= arrayLeadsAndTails[2][1]) {
+        arrayHitDroids[2].push(i)
+        delete arrayAllDroids[2].splice([arrayAllDroids[2].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[3][0] && i <= arrayLeadsAndTails[3][1]) {
+        arrayHitDroids[3].push(i)
+        delete arrayAllDroids[3].splice([arrayAllDroids[3].indexOf(i)], 1)
+      } else if (i >= arrayLeadsAndTails[4][0] && i <= arrayLeadsAndTails[4][1]) {
+        arrayHitDroids[4].push(i)
+        delete arrayAllDroids[4].splice([arrayAllDroids[4].indexOf(i)], 1)
+      }
+      cells[i].classList.remove('bDroid')
+      cells[i].classList.add('hit')
+      score += 100
+      scoretally.innerHTML = score
+      removeLaser(i)
+      laser = mFalcon
+    }
+    if (sum === 0) {
+      gameWon()
+      clearInterval(interval)
+      clearInterval(interval2)
+      clearInterval(interval3)
+      clearInterval(interval4)
+      clearInterval(interval5)
+    }
+  }
+}
+```
   
 ## Screenshots
 ![screnshot](Screenshots/GP_Home.png)
@@ -186,9 +278,13 @@ This was a feature that I really liked the idea of an probably spent too much ti
 
 ### Getting boss too move together 
 
-Moving Darth Vadar randomly but keeping the 4 together and not allowing any of the 'squares' to go over the edge of the grid.
+In order to get Darth Vader to move randomly whilst keeping 'his' 4 squares together and not having them extend past the end of the grid, I had to hard code the possible squares that his first piece (top-left) could move into. And then offsetting the rest of him against this first square.
 
 ```
+
+const possibleCells = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43]
+
+
 // * === Add/Remove Darth ===
 
 function addDarth() {
@@ -241,3 +337,8 @@ Asside from fixing the bugs...
 * I think this would have been very achievable with a little more time, and probably should have tried to achieve this at the expense of one of the levels, however I got a little caught up trying to achieve a 'full game' user experience and simply ran out of time. 
 
 ## Images
+
+* **Droid:** https://bbts1.azureedge.net/images/p/full/2019/06/12bdcb4b-4d63-4ebb-8173-10181eab20bc.jpg
+* **Stormtrooper:** https://www.sideshow.com/storage/product-images/7180/stormtrooper_star-wars_feature.jpg
+* **Millenium Falcon:** https://www.pikpng.com/pngl/m/30-300944_bleed-area-may-not-be-visible-millennium-falcon.png
+* **Darth Vader:** https://i.pinimg.com/originals/69/91/a0/6991a0ffe7fe44110d20a45793e4a5b8.jpg
