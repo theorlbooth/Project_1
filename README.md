@@ -258,7 +258,7 @@ function droidHit() {
   
 ## Screenshots
 
-<img src="Screenshots/GP_Level_3.png" alt="Level 3 Gameplay">
+<img src="Screenshots/GP_Level3.png" alt="Level 3 Gameplay">
 <img src="Screenshots/GP_Boss.png" alt="Boss"> 
 
 <img src="Screenshots/GP_Level_4.2.png" alt="Level 4 Gameplay" width="49.5%"> <img src="Screenshots/Rules.png" alt="Rules" width="24.5%"> <img src="Screenshots/Scoreboard.png" alt="Scoreboard" width="24.5%">
