@@ -270,6 +270,42 @@ function droidHit() {
 
 ### Local sotrage for scores carried to different levels
 
+I really wanted to encoorporate cross level scoring to increase the 'real game' feel of the project. Local storage seemed like the obvious way to do this. 
+
+```
+let playerScores = []
+const scoreList = document.querySelector('ol')
+const submit = document.querySelector('#submit-score')
+
+
+if (localStorage.getItem('scores') !== null) {
+  playerScores = JSON.parse(localStorage.getItem('scores'))
+  orderAndDisplayScores()
+}
+
+submit.addEventListener('click', () => {
+  document.querySelector('#submit-score').disabled = true
+  const newName = document.querySelector('input').value
+  const finalScore = Number(document.querySelector('#player-score').innerHTML)
+  const player = { name: newName, score: finalScore }
+  playerScores.push(player)
+
+  if (localStorage) {
+    localStorage.setItem('scores', JSON.stringify(playerScores))
+  }
+  orderAndDisplayScores()
+})
+
+
+function orderAndDisplayScores() {
+  const array = playerScores
+    .sort((playerA, playerB) => playerB.score - playerA.score)
+    .map(player => {
+      return `<li>${player.name}............            ${player.score}</li>`
+    })
+  scoreList.innerHTML = array.join('')
+}
+```
 
 ### Harder / decaying enemies
 
