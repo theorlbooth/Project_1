@@ -257,14 +257,15 @@ function droidHit() {
 ```
   
 ## Screenshots
-![screnshot](Screenshots/GP_Home.png)
-![screnshot_2](Screenshots/GP_Level_2.png)
-![screnshot_3](Screenshots/GP_Level_3.png)
-![screnshot_4](Screenshots/GP_Level_4.1.png)
-![screnshot_5](Screenshots/GP_Level_4.2.png)
-![screnshot_6](Screenshots/GP_Boss.png)
-![screnshot_7](Screenshots/GP_Rules.png)
-![screnshot_8](Screenshots/GP_Leaderboard.png)
+
+<img src="Screenshots/GP_Level_3.png" alt="Level 3 Gameplay">
+<img src="Screenshots/GP_Boss.png" alt="Boss"> 
+
+<img src="Screenshots/GP_Level_4.2.png" alt="Level 4 Gameplay" width="49.5%"> <img src="Screenshots/Rules.png" alt="Rules" width="24.5%"> <img src="Screenshots/Scoreboard.png" alt="Scoreboard" width="24.5%">
+
+<img src="Screenshots/Level_1.png" alt="Level 1" width="19.5%"> <img src="Screenshots/Level_2.png" alt="Level 2" width="19.5%"> <img src="Screenshots/Level_3.png" alt="Level 3" width="19.5%"> <img src="Screenshots/Level_4.png" alt="Level 4" width="19.5%"> <img src="Screenshots/Boss.png" alt="Boss Level" width="19.5%">
+
+
 
 ## Challenges / Victories
 
