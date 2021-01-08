@@ -272,7 +272,7 @@ function droidHit() {
 
 ### Local sotrage for scores carried to different levels
 
-I really wanted to encoorporate cross level scoring to increase the 'real game' feel of the project. Local storage seemed like the obvious way to do this. 
+I really wanted to incorporate cross level scoring to increase the 'real game' feel of the project. Local storage seemed like the obvious way to do this. 
 
 ```
 let playerScores = []
@@ -359,7 +359,7 @@ function moveDarth() {
 
 ## Potential future features
 
-Asside from fixing the bugs...
+Aside from fixing the bugs...
 
 
 ### Increased Speed
