@@ -45,7 +45,7 @@ The two main off-spec features I wanted to incoorporate were to have the 'aliens
 
 ### Wireframes
 
-I used a few different techonoligies in order to plan and wireframe my project - largely depending on whether I was by my computer or not and if I needed to run any calculations:
+I used a few different technologies in order to plan and wireframe my project - largely depending on whether I was by my computer or not and if I needed to run any calculations:
 
 ![wireframe](Screenshots/WF_1.png)
 ![wireframe_2](Screenshots/WF_2.png)
@@ -272,7 +272,7 @@ function droidHit() {
 
 ### Local sotrage for scores carried to different levels
 
-I really wanted to encoorporate cross level scoring to increase the 'real game' feel of the project. Local storage seemed like the obvious way to do this. 
+I really wanted to incorporate cross level scoring to increase the 'real game' feel of the project. Local storage seemed like the obvious way to do this. 
 
 ```
 let playerScores = []
@@ -359,7 +359,7 @@ function moveDarth() {
 
 ## Potential future features
 
-Asside from fixing the bugs...
+Aside from fixing the bugs...
 
 
 ### Increased Speed
