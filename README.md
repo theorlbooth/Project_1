@@ -45,7 +45,7 @@ The two main off-spec features I wanted to incoorporate were to have the 'aliens
 
 ### Wireframes
 
-I used a few different techonoligies in order to plan and wireframe my project - largely depending on whether I was by my computer or not and if I needed to run any calculations:
+I used a few different technologies in order to plan and wireframe my project - largely depending on whether I was by my computer or not and if I needed to run any calculations:
 
 ![wireframe](Screenshots/WF_1.png)
 ![wireframe_2](Screenshots/WF_2.png)
