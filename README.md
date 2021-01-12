@@ -12,7 +12,7 @@ This was the first project we were assigned on the course and the aim of it was 
 
 ## Technologies
 
-* Javascript
+* JavaScript
 * HTML
 * CSS
 * Git & GitHub
@@ -25,7 +25,7 @@ This was the first project we were assigned on the course and the aim of it was 
 
 ### Requirements
 
-* Use a mix of **HTML/CSS** & **Javascript** to render a game in the browser
+* Use a mix of **HTML/CSS** & **JavaScript** to render a game in the browser
 * Use logic and **DOM manipulation** to control the game flow
 * Use semantic markup for **HTML** and **CSS**
 * Deploy the game online
