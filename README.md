@@ -5,7 +5,7 @@
 
 ## Overview
 
-This was the first project we were assigned on the course and the aim of it was to create a playable game of our choice from a list (Battleships / Candy Crush / Frogger / Minesweeper / Pacman / Reversi / Snake / Space Invaders / Tetris / Ultimate Tic-Tac-Toe) and reder it playable in a browser using DOM-manipulation. This was a solo project and we had 5 days to implement it. I chose to do Space Invaders as I thought it would allow more creative freedom and present more avenues on which to expand. 
+This was the first project we were assigned on the course and the aim of it was to create a playable game of our choice from a list (Battleships / Candy Crush / Frogger / Minesweeper / Pacman / Reversi / Snake / Space Invaders / Tetris / Ultimate Tic-Tac-Toe) and render it playable in a browser using DOM-manipulation. This was a solo project and we had 5 days to implement it. I chose to do Space Invaders as I thought it would allow more creative freedom and present more avenues on which to expand. 
 
 [You can find the project here.](https://theorlbooth.co.uk/Project_1/)
 
@@ -41,7 +41,7 @@ This was the first project we were assigned on the course and the aim of it was 
 
 ## Approach
 
-The two main off-spec features I wanted to incoorporate were to have the 'aliens' moving in opposite directions and not just moving as a block, and to have a multilevel game, potentially with a boss at the end. I decided to leave the grid in place rather than to hide it in order to give the game a bit more of a retro feel to it, removing it only for the last level so as to give the 'boss' more definition.
+The two main off-spec features I wanted to incorporate were (a) to have the 'aliens' moving in opposite directions and not just moving as a block, and (b) to have a multilevel game, potentially with a boss at the end. I decided to leave the grid in place rather than hide it which gave the game a bit more of a retro aesthetic, removing it only for the last level so as to give the 'boss' more definition.
 
 ### Wireframes
 
@@ -100,12 +100,12 @@ document.addEventListener('keydown', (event) => {
 
 ### Enemy movement
 
-This was probably one of the more time consuming tasks as I wanted the enemies to move in opposite directions depending on the rows they were on. In order to get this to work I came up with a system whereby there is a lead square and a tail square and as these move the enemies then follow them. At the end of each line the lead becomes the tail on the next line and vise versa. I then applied some logic to check if either the lead square or the tail square was equal to the start or the end of the line in question and then applied the required functions. 
+This was probably one of the more time consuming tasks as I wanted the enemies to move in opposite directions depending on the rows they were on. In order to get this to work, I came up with a system whereby there is a lead square and a tail square and as these move the enemies then follow them. At the end of each line the lead becomes the tail on the next line and vice versa. I then applied some logic to check if either the lead square or the tail square was equal to the start or the end of the line in question and then applied the required functions. 
 
 
 ### Lasers
 
-In order to be able to have multiple lasers I put an event listener linked to the space bar in that adds a laser to the cell directly above the Millenium Falcon wherever it is on the board. I then wrote an interval function to check every 200ms if there are any lasers on the board and to move them accordingly.
+In order to be able to have multiple lasers I put an event listener linked to the space bar in, that adds a laser to the cell directly above the Millenium Falcon wherever it is on the board. I then wrote an interval function to check every 200ms if there are any lasers on the board and to move them accordingly.
 
 
 ### Enemy Lasers
@@ -134,7 +134,7 @@ The enemy lasers were exactly the same concept as the lasers, with 2 fundadmenta
 
 ### Scaling
 
-The main issue with scaling was finding the begging and end of each row without having to hard code them. The formula (see below in spreadsheet) was easy enough to find - this allowed me to enter the number of columns required and get the begging and end of each row, however I couldnt find a way to replicate the formula n times - so I ended up having to hard code that part:
+The main issue with scaling was finding the beginning and the end of each row without having to hard code them. The formula (see below in spreadsheet) was easy enough to workout - this allowed me to enter the number of columns required and get the beginning and the end of each row, however, I couldn't find a way to replicate the formula n times - so I ended up having to hard code that part:
 
 ```
 const row1Beg = (width * (1 - 1))
@@ -163,7 +163,7 @@ const row9End = ((width * (width - (width - 9))) - 1)
 
 ### Collisions
 
-In order to check for collisions I wrote the following code to check (with intervals) whether at any one time the class of the element contained both a laser and any of the 'enemy' classes. If so then to remove both the laser and either change the class (if the enemy required multiple hits) or to remove the class in order to leave the cell blank.
+In order to check for collisions, I wrote the following code to check (with intervals) whether at any one time the class of the element contained both a laser and any of the 'enemy' classes. If so, then to remove both the laser and either change the class (if the enemy required multiple hits) or to remove the class in order to leave the cell blank.
 
 ```
 function droidHit() {
@@ -311,7 +311,7 @@ function orderAndDisplayScores() {
 
 ### Harder / decaying enemies
 
-This was a feature that I really liked the idea of an probably spent too much time implementing. In order to get the 'clones' to decay I once hit for the first time, I created 2 classes for this type of enemy, one for pre-hit and the other for post-hit. And after a bit of **Paintbrush** on the original image, I had a new image to replace the old once the new class came into place. 
+This was a feature that I really liked the idea of and probably spent too much time implementing. In order to get the 'clones' to decay once hit for the first time, I created two classes for this type of enemy; one for pre-hit and the other for post-hit. After a bit of **Paintbrush** on the original image, I had a new image to replace the old once the new class came into place. 
 
 
 ### Getting boss too move together 
@@ -352,7 +352,7 @@ function moveDarth() {
 
 ## Known bugs
 
-* I have found on occasion that when too many lasers are fired from the M-Flacon that some of them pass through the 'enemies' - this doesnt seem to happen on every level and usually happens when there are fewer 'enemies' left on the grid.
+* I have found on occasion that when too many lasers are fired from the M-Falcon that some of them pass through the 'enemies' - this doesn't seem to happen on every level and usually happens when there are fewer 'enemies' left on the grid.
 
 * Although not one I have managed to replicate - a friend advised me that he managed to get the 'Darth Lives' on the final level to as low as '-66'. There was obviously something very wrong there, but as I say I have not managed to recreate this issue.
 
@@ -368,11 +368,11 @@ Aside from fixing the bugs...
 
 ### Mobile Responsiveness 
 
-* I decided to spend more time developing the game rather than trying to implement mobile responsiveness. It would be a nice feature to have though and one my 'test subjects' highlighted stongly.
+* I decided to spend more time developing the game rather than trying to implement mobile responsiveness. It would be a nice feature to have though and one that my 'test subjects' highlighted stongly.
 
 ### Darth decaying like the 'clones'
 
-* I think this would have been very achievable with a little more time, and probably should have tried to achieve this at the expense of one of the levels, however I got a little caught up trying to achieve a 'full game' user experience and simply ran out of time. 
+* I think this would have been very achievable with a little more time, and probably should have tried to achieve this at the expense of one of the levels. However, I got a little caught up trying to achieve a 'full game' user experience and simply ran out of time. 
 
 ## Images
 
